@@ -1,0 +1,7 @@
+cat
+plane
+boat
+snake
+house
+welcome
+car

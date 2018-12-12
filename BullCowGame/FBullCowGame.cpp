@@ -26,9 +26,11 @@ void FBullCowGame::Reset()
 	return;
 }
 
+
+
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 {
-	if (IsNumber(Guess)) //TODO method to detect numbers and add the result in the enum guess status
+	if (IsNumber(Guess)) 
 	{
 		return EGuessStatus::Number;
 	}
