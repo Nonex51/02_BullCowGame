@@ -18,6 +18,7 @@ void PlayGame();
 FText GetValidGuess();
 bool AskToPlayAgain();
 void PrintGameSummary();
+void ClearCons();
 
 FBullCowGame BCGame; // instantiate a new game, which we re-use acrosss plays
 
@@ -110,9 +111,12 @@ bool AskToPlayAgain()
 {
 	std::cout << "Do you want to play again with the same word (y/n)? ";
 	FText Response = "";
-	std::getline(std::cin, Response);
-	return (Response[0] == 'y') || (Response[0] == 'Y');		//TODO if the response it's yes than put lot of new space to clear the board
-	
+			
+		if (std::getline(std::cin, Response))
+		{
+			ClearCons();
+		}
+	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
 
 void PrintGameSummary()
@@ -125,4 +129,10 @@ void PrintGameSummary()
 	{
 		std::cout << "Better luck next time! \n";
 	}
+}
+
+void ClearCons()
+{
+	std::cout << "\n\n\n\nCLEAR\n\n";
+	
 }

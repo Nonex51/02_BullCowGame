@@ -114,9 +114,14 @@ bool FBullCowGame::IsLowercase(FString Word) const
 	return true;
 }
 
-bool FBullCowGame::IsNumber(FString) const
+bool FBullCowGame::IsNumber(FString Word) const
 {
-	//TODO  Number function
-	// if there is a number in the word 
-	return false;
+	for (auto Letter : Word)
+	{
+		if (!isdigit(Letter))
+		{
+			return false;
+		}
+		}
+	return true;
 }
