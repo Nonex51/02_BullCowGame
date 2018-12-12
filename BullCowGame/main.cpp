@@ -133,6 +133,5 @@ void PrintGameSummary()
 
 void ClearCons()
 {
-	std::cout << "\n\n\n\nCLEAR\n\n";
-	
+	std::system("cls");	
 }
