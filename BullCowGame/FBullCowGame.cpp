@@ -19,7 +19,7 @@ int32 FBullCowGame::GetMaxTries() const {
 
 void FBullCowGame::Reset()
 {
-	const FString HIDDEN_WORD = "plane"; //this must be an isogram
+	const FString HIDDEN_WORD = "cat"; //this must be an isogram
 	MyHiddenWord = HIDDEN_WORD;
 	MyCurrentTry = 1;
 	bGameIsWon = false;
@@ -127,3 +127,5 @@ bool FBullCowGame::IsNumber(FString Word) const
 		}
 	return true;
 }
+
+
