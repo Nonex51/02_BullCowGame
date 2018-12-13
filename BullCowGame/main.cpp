@@ -46,7 +46,7 @@ void PlayGame()
 	int32 MaxTries = BCGame.GetMaxTries();
 	// loop for the number of turns asking for guesses
 	while ( ! BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries) { // ! = NOT
-		FText Guess = GetValidGuess();
+		FText Guess = GetValidGuess();												//NOTE when I start the game Guess contains "", this is not a correct things
 
 		// submit valid guess to the game, and receive counts
 		FBullCowCount BullCowCount = BCGame.SubmitValidGuess(Guess);
@@ -60,7 +60,7 @@ void PlayGame()
 	return;
 }
 
-FText GetValidGuess()
+FText GetValidGuess()																//NOTE before validguess be sure the player put something
 {
 	FText Guess = "";
 	EGuessStatus Status = EGuessStatus::Invalid_Status;
