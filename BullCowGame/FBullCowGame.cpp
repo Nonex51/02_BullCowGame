@@ -1,6 +1,8 @@
 #pragma once 
 
 #include "FBullCowGame.h"
+#include <fstream>
+#include <iostream>
 #include <map>
 #define TMap std::map
 
@@ -128,4 +130,17 @@ bool FBullCowGame::IsNumber(FString Word) const
 	return true;
 }
 
+void FBullCowGame::SaveScore()
+{
+	std::ofstream file("../save.txt", std::ios::out | std::ios::trunc);  // Open with read right 
 
+	if (file)
+	{
+		std::string nom = "Guess";
+		int Score = MyCurrentTry;
+		file << nom << ". as " << Score << " points.";
+		file.close();
+	}
+	else
+		std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+}

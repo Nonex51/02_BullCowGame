@@ -37,7 +37,7 @@ public:
 	void Reset();
 	FBullCowCount SubmitValidGuess(FString);
 
-
+	void SaveScore();
 	// ^^ Please try and ignore this and focus on the interface above ^^
 private:
 	// see constructor for initialisation

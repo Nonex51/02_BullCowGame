@@ -6,7 +6,6 @@
 #include "Menu.h"
 #include "FBullCowGame.h"
 
-
 void Menu::Intro()
 {
 	std::cout << "Welcome to Bulls and Cows, a fun word game.\n";
@@ -62,11 +61,10 @@ void Menu::ClearCons()
 	std::system("cls");
 }
 
-
 int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD from FBullCowGame.cpp
 {
-	std::ifstream fichier("../Isograms.txt", std::ios::in);  //open the file
-	if (fichier)
+	std::ifstream file("../Isograms.txt", std::ios::in);  //open the file
+	if (file)
 	{
 		std::string ligne;
 		int num_ligne = 0;
@@ -74,10 +72,10 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 		std::cout << " ==================== BULL & COW ====================\n" << std::endl;
 		std::cout << " ---------------------- Liste -----------------------\n" << std::endl;
 
-		while (getline(fichier, ligne))  // tant que l'on peut mettre la ligne dans "contenu"
+		while (getline(file, ligne))  
 		{
 			++num_ligne;
-			std::cout << "               " << num_ligne <<". " << ligne << std::endl;  // on l'affiche
+			std::cout << "               " << num_ligne <<". " << ligne << std::endl;  
 		}	
 	}
 	else //if open fail
@@ -88,25 +86,5 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 	return 0;
 }
 
-/*
-if (fichier)
 
-{
-
-
-
-	while (getline(fichier, ligne))  // tant que l'on peut mettre la ligne dans "contenu"
-
-	{
-
-		cout << ligne << endl;  // on l'affiche
-
-	}
-
-}
-std::string content;
-fichier >> content;
-std::cout << content << "\n";
-//HIDDEN_WORD = content;
-*/
 

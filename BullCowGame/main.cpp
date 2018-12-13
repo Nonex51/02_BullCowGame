@@ -106,6 +106,7 @@ void PrintGameSummary()
 	if (BCGame.IsGameWon())
 	{
 		std::cout << "WELL DONE - YOU WIN!\n";
+		BCGame.SaveScore();
 	}
 	else
 	{
