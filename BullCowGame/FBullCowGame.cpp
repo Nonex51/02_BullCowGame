@@ -138,7 +138,8 @@ void FBullCowGame::SaveScore()
 	{
 		std::string nom = "Guess";
 		int Score = MyCurrentTry;
-		file << nom << ". as " << Score << " points.";
+		int word = MyHiddenWord.length();
+		file << nom << " as retry only " << Score << " to guess the word with " << word <<" letters;";
 		file.close();
 	}
 	else

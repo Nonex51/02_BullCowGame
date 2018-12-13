@@ -1,1 +1,1 @@
-Guess. as 3 points.
+Guess. as retry only 2 to guess the word with 3 letters;
