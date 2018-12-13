@@ -131,15 +131,15 @@ bool FBullCowGame::IsNumber(FString Word) const
 }
 
 void FBullCowGame::SaveScore()
-{
+{														//remplace ios::trunc						// TODO save ligne after ligne not remplace the ligne
 	std::ofstream file("../save.txt", std::ios::out | std::ios::trunc);  // Open with read right 
 
 	if (file)
 	{
-		std::string nom = "Guess";
+		std::string nom = "Guess";																	 //TODO take the name of the actuelle player and put on the screen
 		int Score = MyCurrentTry;
 		int word = MyHiddenWord.length();
-		file << nom << " as retry only " << Score << " to guess the word with " << word <<" letters;";
+		file << nom << " as retry only " << Score << " to guess the word with " << word <<" letters;"; 
 		file.close();
 	}
 	else

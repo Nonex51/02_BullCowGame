@@ -86,5 +86,33 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 	return 0;
 }
 
+void Menu::ViewStats()
+{
+	{
+		std::ifstream file("../save.txt", std::ios::in);  //open the file
+		if (file)
+		{
+			std::string ligne;
+			int num_ligne = 0;
+			ClearCons();
+			std::cout << " ==================== BULL & COW ====================\n" << std::endl;
+			std::cout << " ---------------------- Score -----------------------\n" << std::endl;
+
+			while (getline(file, ligne))
+			{
+				++num_ligne;
+				std::cout << "               " << num_ligne << ". " << ligne << std::endl;
+			}
+		}
+		else //if open fail
+		{
+			std::cerr << "Open the File it's impossible !" << std::endl;
+			std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
+		}
+		return;
+	}
+
+}
+
 
 

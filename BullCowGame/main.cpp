@@ -164,7 +164,9 @@ void DisplayMenu()
 			MenuInst.NewWordMenu();
 			break;
 
-		case 3:std::cout << "Fonctionnality non implement" << std::endl;
+		case 3:
+			MenuInst.ClearCons();
+			MenuInst.ViewStats();
 			break;
 
 		case 4:std::cout << "Fonctionnality non implement" << std::endl;

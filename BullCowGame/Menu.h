@@ -13,6 +13,7 @@ public:
 	int AddNewWord();
 	void ClearCons();
 	int ChooseNewWord();
+	void ViewStats();
 
 	/*
 	void DisplayMenu();
