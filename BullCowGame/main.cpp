@@ -34,6 +34,7 @@ Menu MenuInst;//instantiate a new menu
 // the entry point for our application
 int main()
 {
+	MenuInst.ShowMenu();
 	DisplayMenu();
 	return 0; // exit the application
 }
@@ -97,7 +98,7 @@ bool AskToPlayAgain()
 	std::cout << "Do you want to play again with the same word (y/n)? ";
 	FText Response = "";		
 		if (std::getline(std::cin, Response)){ MenuInst.ClearCons(); }
-		else { DisplayMenu(); }
+		else { MenuInst.ShowMenu(); DisplayMenu(); }
 	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
 
@@ -127,26 +128,18 @@ void DisplayMenu()
 	int varmenu;
 	bool bPlayAgain = false;
 	do
-	{
-		std::cout << " ==================== BULL & COW ====================\n" << std::endl;
-		std::cout << " ----------------------- MENU -----------------------\n" << std::endl;
-		std::cout << "               1. Start Bull&Cow" << std::endl;
-		std::cout << "               2. Choose a New Word" << std::endl; //TODO under menu to choose between create, look, select in the Isogram.txt list
-		std::cout << "               3. Look the stats" << std::endl; //TODO a function to make some stats about the game or about the player
-		std::cout << "               4. Option" << std::endl; // TODO option menu to choose color
-		std::cout << "               5. Quit" << std::endl;
-		std::cout << " \n\n" << std::endl;
-		std::cout << "    Press the number of your choice and press Enter" << std::endl;
+	{  
 		std::cin >> varmenu;
 		std::cout << std::endl;
 
 		switch (varmenu)
 		{
-		case 0: 
+		case 0:
 			MenuInst.ClearCons();
-			std::cout << "   \n\n \n\n  Press the number of your choice and press Enter" << std::endl;
-			_sleep(2000);
+			std::cout << "   \n\n \n\n  Please, Press the number of your choice and press Enter" << std::endl;
+			_sleep(2500);
 			MenuInst.ClearCons();
+			MenuInst.ShowMenu();
 			DisplayMenu();
 			break;
 

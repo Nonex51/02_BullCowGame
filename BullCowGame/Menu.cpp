@@ -22,6 +22,19 @@ void Menu::Intro()
 	return;
 }
 
+void Menu::ShowMenu()
+{
+	std::cout << " ==================== BULL & COW ====================\n" << std::endl;
+	std::cout << " ----------------------- MENU -----------------------\n" << std::endl;
+	std::cout << "               1. Start Bull&Cow" << std::endl;
+	std::cout << "               2. Choose a New Word" << std::endl; //TODO under menu to choose between create, look, select in the Isogram.txt list
+	std::cout << "               3. Look the stats" << std::endl; //TODO a function to make some stats about the game or about the player
+	std::cout << "               4. Option" << std::endl; // TODO option menu to choose color
+	std::cout << "               5. Quit" << std::endl;
+	std::cout << " \n\n" << std::endl;
+	std::cout << "    Press the number of your choice and press Enter" << std::endl;
+}
+
 void Menu::NewWordMenu()
 {
 	int menu;
@@ -113,6 +126,8 @@ void Menu::ViewStats()
 	}
 
 }
+
+
 
 
 
