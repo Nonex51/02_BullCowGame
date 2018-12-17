@@ -111,31 +111,34 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 			number = num_ligne;
 		}
 
-
-
 	}
-
 	else //if open fail
 	{
 		std::cerr << "Open the File it's impossible !" << std::endl;
 		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 	}
-
-	
+	SelectWord();
 
 	return 0;
 }
+
 void Menu::SelectWord()
 {
 	int menu;
 	int word;
 	do 
 	{
-		/*std::ifstream file("../Isograms.txt");
-		std::vector<int> nombres(
+		//TODO create a table with the content of my list isogram with the number in ID 
+		/*
+		std::ifstream file("../Isograms.txt");
+		std:: a <int> b (
 			std::istream_iterator<int>(file),
-			std::istream_iterator<int>{});*/
-
+			std::istream_iterator<int>{});
+		*/
+		
+		//TODO table of 10 word
+		//TODO insert world in the cases of the table
+		 
 
 		std::cout << "Select the number to put the word in the list" << std::endl;
 		std::cout << "There are " << number << " words in the list" << std::endl;
@@ -145,10 +148,13 @@ void Menu::SelectWord()
 		{
 		case 1:
 			std::cout << "you select 1" << std::endl;
+			//TODO take case one of the table (index 0)
+			//TODO insert the value from the case inside the HIDDEN_WORD variable
 			std::cin >> word;
 			break;
 		case 2:
 			std::cout << "you select 2" << std::endl;
+			//TODO take case 2
 			break;
 		case 3:
 			std::cout << "you select 3" << std::endl;
@@ -164,7 +170,10 @@ void Menu::SelectWord()
 			break;
 		}
 	} while (menu != 0);
-	
+	//NOTE how to generate case if there is more word automaticly ? 
+	//NOTE Generat a struture that take in parameter the number of the word in the list, 
+	//from the table, that struture is a boucle with a case that insert the word in the "hidden" variable 
+
 }
 
 
