@@ -21,11 +21,26 @@ int32 FBullCowGame::GetMaxTries() const {
 
 void FBullCowGame::Reset()
 {
-	const FString HIDDEN_WORD = "cat"; //this must be an isogram
-	MyHiddenWord = HIDDEN_WORD;
-	MyCurrentTry = 1;
-	bGameIsWon = false;
-	return;
+	//FString HIDDEN_WORD = "cat"; //this must be an isogram
+	
+	std::ifstream file("../Isograms.txt", std::ios::in);  //open the file
+	FString str;
+	if (file)
+	{
+		std::getline(file, str);
+		FString HIDDEN_WORD = str;  
+		MyHiddenWord = HIDDEN_WORD;
+		MyCurrentTry = 1;
+		bGameIsWon = false;
+		return;
+	}
+	else //if open fail
+	{
+		std::cerr << "Open the File it's impossible !" << std::endl;
+		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
+	}
+	
+	
 }
 
 

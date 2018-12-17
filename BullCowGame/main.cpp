@@ -26,6 +26,7 @@ void PrintGameSummary();
 void DisplayMenu();
 void GameIntro();
 
+void Changeptr();
 
 
 FBullCowGame BCGame; // instantiate a new game, which we re-use acrosss plays
@@ -39,6 +40,11 @@ int main()
 	return 0; // exit the application
 }
 
+
+void Changeptr(FText *HIDDEN_WORD)
+{
+	*HIDDEN_WORD = 'dog';
+}
 
 
 void PlayGame()
@@ -128,6 +134,8 @@ void GameIntro()
 	std::cout << " letter isogram I'm thinking of?\n";
 	std::cout << std::endl;
 }
+
+
 
 
 void DisplayMenu() 

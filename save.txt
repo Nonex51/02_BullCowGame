@@ -1,15 +1,1 @@
-Xav57
-Xav57
-Xav57
-Xav57
-Xav57
-Xav57
-Xav57
-Xav57
-Xav57
-
-first
-add
-mynewword
-blabla
-secondword
+Guess as retry only 2 to guess the word with 5 letters;
