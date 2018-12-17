@@ -13,9 +13,10 @@ public:
 	int AddNewWord();
 	void ClearCons();
 	int ChooseNewWord();
+	void SelectWord();
 	void ViewStats();
 	void ShowMenu();
-
+	
 	/*
 	
 	void NewWordMenu();

@@ -3,6 +3,8 @@
 #include <string>	
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <iterator>
 #include "Menu.h"
 #include "FBullCowGame.h"
 
@@ -53,9 +55,10 @@ void Menu::NewWordMenu()
 			{
 			case 1:
 				ChooseNewWord();
+				SelectWord();
 				break;
 			case 2:
-				//AddNewWord();
+				AddNewWord();
 				break;
 			case 3:std::cout << " " << std::endl;
 				break;
@@ -65,17 +68,33 @@ void Menu::NewWordMenu()
 
 int Menu::AddNewWord()
 {
-	//TODO enter a new word and save in the list
+
+std::string word;
+std::string confirm;
+	std::ofstream file("../save.txt", std::ios::out | std::ios::app); // open the file
+
+	std::cout << " Enter your new word to add in the list " << std::endl;
+	std::cin >> word;
+	
+	if (std::getline(std::cin, confirm))
+	{
+		file << word << std::endl;
+		file.close();
+		std::cout << " \" " << word << " \" "<< " It's add in the list\n\n" << std::endl;
+	}
+	else
+		std::cerr << "Open the file it's impossible or write something!" << std::endl;
 	return 0;
 }
 
-void Menu::ClearCons()
-{
-	std::system("cls");
-}
+
+
+int number = 0;
 
 int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD from FBullCowGame.cpp
 {
+	
+	
 	std::ifstream file("../Isograms.txt", std::ios::in);  //open the file
 	if (file)
 	{
@@ -88,15 +107,73 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 		while (getline(file, ligne))  
 		{
 			++num_ligne;
-			std::cout << "               " << num_ligne <<". " << ligne << std::endl;  
-		}	
+			std::cout << "               " << num_ligne <<". " << ligne << std::endl;
+			number = num_ligne;
+		}
+
+
+
 	}
+
 	else //if open fail
 	{
 		std::cerr << "Open the File it's impossible !" << std::endl;
 		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 	}
+
+	
+
 	return 0;
+}
+void Menu::SelectWord()
+{
+	int menu;
+	int word;
+	do 
+	{
+		/*std::ifstream file("../Isograms.txt");
+		std::vector<int> nombres(
+			std::istream_iterator<int>(file),
+			std::istream_iterator<int>{});*/
+
+
+		std::cout << "Select the number to put the word in the list" << std::endl;
+		std::cout << "There are " << number << " words in the list" << std::endl;
+		std::cin >> menu;
+		std::cout << std::endl;
+		switch (menu)
+		{
+		case 1:
+			std::cout << "you select 1" << std::endl;
+			std::cin >> word;
+			break;
+		case 2:
+			std::cout << "you select 2" << std::endl;
+			break;
+		case 3:
+			std::cout << "you select 3" << std::endl;
+			break;
+		case 4:
+			std::cout << "you select 4" << std::endl;
+			break;
+		case 5:
+			std::cout << "you select 5" << std::endl;
+			break;
+		case 6:
+			std::cout << "you select 6" << std::endl;
+			break;
+		}
+	} while (menu != 0);
+	
+}
+
+
+
+
+
+void Menu::ClearCons()
+{
+	std::system("cls");
 }
 
 void Menu::ViewStats()
