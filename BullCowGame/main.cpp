@@ -97,8 +97,15 @@ bool AskToPlayAgain()
 {
 	std::cout << "Do you want to play again with the same word (y/n)? ";
 	FText Response = "";		
-		if (std::getline(std::cin, Response)){ MenuInst.ClearCons(); }
-		else { MenuInst.ShowMenu(); DisplayMenu(); }
+	if (std::getline(std::cin, Response)) {
+		MenuInst.ClearCons(); 
+		MenuInst.ShowMenu();
+		DisplayMenu();
+		}
+		else {
+			MenuInst.ShowMenu();
+			DisplayMenu(); 
+			}
 	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
 
