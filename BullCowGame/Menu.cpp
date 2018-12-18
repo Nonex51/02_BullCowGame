@@ -6,6 +6,9 @@
 #include <sstream>
 #include <iterator>
 #include <vector>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "Menu.h"
 #include "FBullCowGame.h"
 
@@ -153,7 +156,7 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 			{
 				std::cout <<"." << tabbackup[i] << std::endl;
 			}
-		
+		//TODO register the tabbackup table in the file isogram but erase all before
 		system("PAUSE");
 		
 		//return EXIT_SUCCESS;
