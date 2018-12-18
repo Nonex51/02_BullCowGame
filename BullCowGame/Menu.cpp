@@ -157,6 +157,46 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 				std::cout <<"." << tabbackup[i] << std::endl;
 			}
 		//TODO register the tabbackup table in the file isogram but erase all before
+		
+	/*		FILE * pFile;
+			char buffer[] = { 'x' , 'y' , 'z' };
+			pFile = fopen(".. / tables.txt", "wb");
+			fwrite(buffer, sizeof(char), sizeof(buffer), pFile);
+			fclose(pFile);
+			return 0;
+	*/		
+	/*
+			FILE *file;
+				int i;
+
+				file = fopen(".. / tables.txt", "wb");
+				if (!file) {
+					return EXIT_FAILURE;
+				}
+
+				fwrite(tab, sizeof FString, sizeof *tab, file);
+				fclose(file);
+
+				memset(&tab, 0, sizeof FString);
+				file = fopen("tableau.txt", "rb");
+
+				if (!file) {
+					return EXIT_FAILURE;
+				}
+
+				fread(tab, sizeof FString, sizeof *tab, file);
+				fclose(file);
+
+				for (i = 0; i < 10; i++) {
+					printf("%d\n", tab[i]);
+				}
+
+				return EXIT_SUCCESS;
+			}
+
+	*/
+				
+
 		system("PAUSE");
 		
 		//return EXIT_SUCCESS;
