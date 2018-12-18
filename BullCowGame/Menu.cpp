@@ -101,11 +101,10 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 	{
 		std::string ligne;
 		int num_ligne = 0;
-		int id;
+		int id=0;
 		ClearCons();
 		std::cout << " ==================== BULL & COW ====================\n" << std::endl;
 		std::cout << " ---------------------- Liste -----------------------\n" << std::endl;
-
 		while (getline(file, ligne))  
 		{
 			++num_ligne;
@@ -114,23 +113,49 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 		std::cout << " --------------------- End Liste --------------------\n" << std::endl;
 		std::cout << " Press the number from the word of your choice.\n" << std::endl;
 		std::cin >> id;
-		
 		file.clear(); // clear/unset end of file flag
 		file.seekg(0, std::ios::beg);
+		int num_lignebackup = num_ligne + 1;
+
 		// Initialisation table 	
-		std::vector<FString> tab(10);		
+		std::vector<FString> tab(num_ligne);
+		std::vector<FString> tabbackup(num_lignebackup);
+
 		for (int i = 0; i < num_ligne; i++)
 		{
 			file >> tab[i];
 			std::cout << tab[i] << std::endl;
 		}
+		std::cout << "\nfin tab \n"  << std::endl;
+		file.close();
+
+		int wordselect = id - 1;
+		for (int i = 0; i < wordselect; i++) {
+			int j = i + 1;
+			tabbackup[j] = tab[i];
+			std::cout << "." << tabbackup[j] << std::endl;
+		}
+		std::cout << "\nfin first half\n" << std::endl;
+
+		for (int i = id; i <num_ligne; i++){
+			int j = i + 1;
+			tabbackup[j] = tab[i];
+			std::cout << "." << tabbackup[j] << std::endl;
+		}
+		std::cout << "\nfin second half\n" << std::endl;
+		tabbackup[0] = tab[wordselect];
 
 		
-		file.close();
+		std::cout <<"\n you are select "<< tab[wordselect] << " in "<< id << " position.\n" << std::endl;
 		
-		std::cout << tab[id] << std::endl;
+
+			for (int i = 0; i < num_ligne; i++)
+			{
+				std::cout <<"." << tabbackup[i] << std::endl;
+			}
 		
 		system("PAUSE");
+		
 		//return EXIT_SUCCESS;
 	}
 	else //if open fail
@@ -138,8 +163,8 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 		std::cerr << "Open the File it's impossible !" << std::endl;
 		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 	}
-	SelectWord();
-
+	//SelectWord();
+	system("PAUSE");
 	return 0;
 }
 
