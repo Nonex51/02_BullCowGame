@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <iterator>
+#include <vector>
 #include "Menu.h"
 #include "FBullCowGame.h"
 
@@ -37,6 +38,8 @@ void Menu::ShowMenu()
 	std::cout << "    Press the number of your choice and press Enter" << std::endl;
 }
 
+
+
 void Menu::NewWordMenu()
 {
 	int menu;
@@ -55,7 +58,7 @@ void Menu::NewWordMenu()
 			{
 			case 1:
 				ChooseNewWord();
-				SelectWord();
+				//SelectWord();
 				break;
 			case 2:
 				AddNewWord();
@@ -90,16 +93,15 @@ std::string confirm;
 
 
 int number = 0;
-
+;
 int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD from FBullCowGame.cpp
 {
-	
-	
 	std::ifstream file("../Isograms.txt", std::ios::in);  //open the file
 	if (file)
 	{
 		std::string ligne;
 		int num_ligne = 0;
+		int id;
 		ClearCons();
 		std::cout << " ==================== BULL & COW ====================\n" << std::endl;
 		std::cout << " ---------------------- Liste -----------------------\n" << std::endl;
@@ -107,10 +109,29 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 		while (getline(file, ligne))  
 		{
 			++num_ligne;
-			std::cout << "               " << num_ligne <<". " << ligne << std::endl;
-			number = num_ligne;
+			std::cout << "               " << num_ligne <<". " << ligne << std::endl;	
+		}
+		std::cout << " --------------------- End Liste --------------------\n" << std::endl;
+		std::cout << " Press the number from the word of your choice.\n" << std::endl;
+		std::cin >> id;
+		
+		file.clear(); // clear/unset end of file flag
+		file.seekg(0, std::ios::beg);
+		// Initialisation table 	
+		std::vector<FString> tab(10);		
+		for (int i = 0; i < num_ligne; i++)
+		{
+			file >> tab[i];
+			std::cout << tab[i] << std::endl;
 		}
 
+		
+		file.close();
+		
+		std::cout << tab[id] << std::endl;
+		
+		system("PAUSE");
+		//return EXIT_SUCCESS;
 	}
 	else //if open fail
 	{
@@ -121,6 +142,17 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 void Menu::SelectWord()
 {
@@ -149,7 +181,7 @@ void Menu::SelectWord()
 		case 1:
 			std::cout << "you select 1" << std::endl;
 			//TODO take case one of the table (index 0)
-			//TODO insert the value from the case inside the HIDDEN_WORD variable
+			//TODO insert the value on the first place in the list
 			std::cin >> word;
 			break;
 		case 2:

@@ -38,9 +38,7 @@ void FBullCowGame::Reset()
 	{
 		std::cerr << "Open the File it's impossible !" << std::endl;
 		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
-	}
-	
-	
+	}	
 }
 
 

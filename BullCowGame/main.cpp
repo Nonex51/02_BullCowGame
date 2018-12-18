@@ -26,26 +26,15 @@ void PrintGameSummary();
 void DisplayMenu();
 void GameIntro();
 
-void Changeptr();
+FBullCowGame BCGame; 
+Menu MenuInst;
 
-
-FBullCowGame BCGame; // instantiate a new game, which we re-use acrosss plays
-Menu MenuInst;//instantiate a new menu
-
-// the entry point for our application
 int main()
 {
-	MenuInst.ShowMenu();
+	//MenuInst.ShowMenu();
 	DisplayMenu();
 	return 0; // exit the application
 }
-
-
-void Changeptr(FText *HIDDEN_WORD)
-{
-	*HIDDEN_WORD = 'dog';
-}
-
 
 void PlayGame()
 {
@@ -105,11 +94,11 @@ bool AskToPlayAgain()
 	FText Response = "";		
 	if (std::getline(std::cin, Response)) {
 		MenuInst.ClearCons(); 
-		MenuInst.ShowMenu();
+		//MenuInst.ShowMenu();
 		DisplayMenu();
 		}
 		else {
-			MenuInst.ShowMenu();
+			//MenuInst.ShowMenu();
 			DisplayMenu(); 
 			}
 	return (Response[0] == 'y') || (Response[0] == 'Y');
@@ -142,11 +131,12 @@ void DisplayMenu()
 {
 	int varmenu;
 	bool bPlayAgain = false;
+	MenuInst.ShowMenu();
 	do
 	{  
 		std::cin >> varmenu;
 		std::cout << std::endl;
-
+		
 		switch (varmenu)
 		{
 		case 0:
@@ -154,7 +144,7 @@ void DisplayMenu()
 			std::cout << "   \n\n \n\n  Please, Press the number of your choice and press Enter" << std::endl;
 			_sleep(2500);
 			MenuInst.ClearCons();
-			MenuInst.ShowMenu();
+			
 			DisplayMenu();
 			break;
 
