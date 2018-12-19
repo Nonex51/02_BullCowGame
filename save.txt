@@ -1,1 +1,1 @@
-Guess as retry only 3 to guess the word with 5 letters;
+rock

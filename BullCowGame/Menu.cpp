@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <list>
+#include <algorithm>
 #include "Menu.h"
 #include "FBullCowGame.h"
 
@@ -150,9 +152,12 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 
 		
 		std::cout <<"\n you are select "<< tab[wordselect] << " in "<< id << " position.\n" << std::endl;
+
+
+		//tabbackup.remove (id);
 		
 
-			for (int i = 0; i < num_ligne; i++)
+			for (int i = 0; i < num_ligne +1; i++)
 			{
 				std::cout <<"." << tabbackup[i] << std::endl;
 			}

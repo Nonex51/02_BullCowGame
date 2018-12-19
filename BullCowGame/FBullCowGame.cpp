@@ -23,7 +23,7 @@ void FBullCowGame::Reset()
 {
 	//FString HIDDEN_WORD = "cat"; //this must be an isogram
 	
-	std::ifstream file("../Isograms.txt", std::ios::in);  //open the file
+	std::ifstream file("../save.txt", std::ios::in);  //open the file
 	FString str;
 	if (file)
 	{

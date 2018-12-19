@@ -10,6 +10,7 @@ user interaction. For game logic see the FBullCowGame class.
 #include "Menu.h"
 #include "time.h"
 #include <fstream>
+#include <limits>
 
 
 //to make syntax unreal friendly
@@ -66,6 +67,10 @@ FText GetValidGuess()																//NOTE before validguess be sure the player
 		// get a guess from the player
 		std::cout << "Try " << CurrentTry << " of " << BCGame.GetMaxTries();
 		std::cout << ". Enter your guess: ";
+
+		
+		//std::cin.ignore(std::numeric_limits<CurrentTry>::max(), '\n');
+
 		std::getline(std::cin, Guess);
 
 		 Status = BCGame.CheckGuessValidity(Guess);
@@ -109,7 +114,7 @@ void PrintGameSummary()
 	if (BCGame.IsGameWon())
 	{
 		std::cout << "WELL DONE - YOU WIN!\n";
-		BCGame.SaveScore();
+		//BCGame.SaveScore();
 	}
 	else
 	{
@@ -150,8 +155,10 @@ void DisplayMenu()
 
 		case 1:	do {				//NOTE when you valide you choice in the menu the game think that you have put one try, why ?
 			MenuInst.ClearCons();
+			
 			MenuInst.Intro();
 			GameIntro();
+			std::cin.ignore(1,' ');
 			PlayGame();
 			bPlayAgain = AskToPlayAgain();
 		} while (bPlayAgain);
@@ -181,12 +188,17 @@ void DisplayMenu()
 
 /*
 
+fix the issue with the file
+
 
 4. Create functionality to track score of the player. (least number of guesses)
-5. In the new Main menu, show their last played score and best score out of all the games they've played so far.
+
+->5. In the new Main menu, show their last played score and best score out of all the games they've played so far.
+
 6. Create Functionality to save the player's scores in disk.
 7. Update the best score in the main menu to read from disk when the game starts and make sure it's shown in the Main Menu
-8. Create Functionality to clear game scores on disk.
+
+->8. Create Functionality to clear game scores on disk.
 */
 
 
