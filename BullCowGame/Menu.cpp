@@ -14,6 +14,13 @@
 #include "Menu.h"
 #include "FBullCowGame.h"
 
+int number = 0;
+
+void Menu::ClearCons()
+{
+	std::system("cls");
+}
+
 void Menu::Intro()
 {
 	std::cout << "Welcome to Bulls and Cows, a fun word game.\n";
@@ -63,12 +70,12 @@ void Menu::NewWordMenu()
 			{
 			case 1:
 				ChooseNewWord();
-				//SelectWord();
 				break;
 			case 2:
 				AddNewWord();
 				break;
 			case 3:std::cout << " " << std::endl;
+				RemoveWord();
 				break;
 			}
 	} while (menu != 0);
@@ -81,7 +88,7 @@ std::string word;
 std::string confirm;
 	std::ofstream file("../save.txt", std::ios::out | std::ios::app); // open the file
 
-	std::cout << " Enter your new word to add in the list " << std::endl;
+	std::cout << " Enter your new word to add in the list\n " << std::endl;
 	std::cin >> word;
 	
 	if (std::getline(std::cin, confirm))
@@ -91,17 +98,17 @@ std::string confirm;
 		std::cout << " \" " << word << " \" "<< " It's add in the list\n\n" << std::endl;
 	}
 	else
-		std::cerr << "Open the file it's impossible or write something!" << std::endl;
+		std::cerr << "Open the file it's impossible or write something!\n" << std::endl;
 	return 0;
 }
 
 
 
-int number = 0;
-;
-int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD from FBullCowGame.cpp
+
+
+int Menu::ChooseNewWord()
 {
-	std::ifstream file("../Isograms.txt", std::ios::in);  //open the file
+	std::ifstream file("../save.txt", std::ios::in);  //open the file
 	if (file)
 	{
 		std::string ligne;
@@ -119,7 +126,7 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 		std::cout << " Press the number from the word of your choice.\n" << std::endl;
 		std::cin >> id;
 		file.clear(); // clear/unset end of file flag
-		file.seekg(0, std::ios::beg);
+		file.seekg(0, std::ios::beg);// up on the begin of the file
 		int num_lignebackup = num_ligne + 1;
 
 		// Initialisation table 	
@@ -131,87 +138,85 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 			file >> tab[i];
 			std::cout << tab[i] << std::endl;
 		}
-		std::cout << "\nfin tab \n"  << std::endl;
 		file.close();
 
 		int wordselect = id - 1;
 		for (int i = 0; i < wordselect; i++) {
 			int j = i + 1;
-			tabbackup[j] = tab[i];
-			std::cout << "." << tabbackup[j] << std::endl;
+			tabbackup[j] = tab[i];	
 		}
-		std::cout << "\nfin first half\n" << std::endl;
-
+		
 		for (int i = id; i <num_ligne; i++){
 			int j = i + 1;
-			tabbackup[j] = tab[i];
-			std::cout << "." << tabbackup[j] << std::endl;
+			tabbackup[j] = tab[i];	
 		}
-		std::cout << "\nfin second half\n" << std::endl;
-		tabbackup[0] = tab[wordselect];
 
 		
-		std::cout <<"\n you are select "<< tab[wordselect] << " in "<< id << " position.\n" << std::endl;
+		tabbackup.erase(tabbackup.begin() + id);// erase the empty container
+		tabbackup[0] = tab[wordselect]; //put the word in the first place
 
+		//NOTE to erase a single element, vec.erase(iterator), to erase multiple elements vec.erase(from, to). 
+		//remove and remove_if to shuffle the ones you want to remove to the end, so that they can be erased in one go
 
-		//tabbackup.remove (id);
-		
+		//TODO clear the file before to register the new list
 
-			for (int i = 0; i < num_ligne +1; i++)
+			std::ofstream file("../save.txt", std::ios::out | std::ios::app); // open the file
+			file.clear(); // clear/unset end of file flag
+			
+			for (int i = 0; i < num_ligne; i++)
 			{
-				std::cout <<"." << tabbackup[i] << std::endl;
+				FString word = tabbackup[i];
+				file << word << std::endl;
 			}
-		//TODO register the tabbackup table in the file isogram but erase all before
-		
-	/*		FILE * pFile;
-			char buffer[] = { 'x' , 'y' , 'z' };
-			pFile = fopen(".. / tables.txt", "wb");
-			fwrite(buffer, sizeof(char), sizeof(buffer), pFile);
-			fclose(pFile);
-			return 0;
-	*/		
-	/*
-			FILE *file;
-				int i;
-
-				file = fopen(".. / tables.txt", "wb");
-				if (!file) {
-					return EXIT_FAILURE;
-				}
-
-				fwrite(tab, sizeof FString, sizeof *tab, file);
-				fclose(file);
-
-				memset(&tab, 0, sizeof FString);
-				file = fopen("tableau.txt", "rb");
-
-				if (!file) {
-					return EXIT_FAILURE;
-				}
-
-				fread(tab, sizeof FString, sizeof *tab, file);
-				fclose(file);
-
-				for (i = 0; i < 10; i++) {
-					printf("%d\n", tab[i]);
-				}
-
-				return EXIT_SUCCESS;
-			}
-
-	*/
-				
-
-		system("PAUSE");
-		
-		//return EXIT_SUCCESS;
+			file.close();
+			
+			//TODO verification with the access file with save.txt or isogram.txt		
+			std::cout << "\n You have move " << tabbackup[0] << " in the first position.\n" << std::endl;
 	}
 	else //if open fail
 	{
 		std::cerr << "Open the File it's impossible !" << std::endl;
 		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 	}
-	//SelectWord();
+	
+	system("PAUSE");
+	return 0;
+}
+
+int Menu::RemoveWord()
+{
+	
+
+	std::ifstream file("../save.txt", std::ios::in);  //open the file
+	if (file)
+	{
+		std::string ligne;
+		int num_ligne = 0;
+		int id = 0;
+		ClearCons();
+		std::cout << " ==================== BULL & COW ====================\n" << std::endl;
+		std::cout << " ----------------------DELETES-----------------------\n" << std::endl;
+		std::cout << " ---------------------- Liste -----------------------\n" << std::endl;
+		while (getline(file, ligne))
+		{
+			++num_ligne;
+			std::cout << "               " << num_ligne << ". " << ligne << std::endl;
+		}
+		std::cout << " --------------------- End Liste --------------------\n" << std::endl;
+		std::cout << " Press the number from the word of your choice.\n" << std::endl;
+		std::cin >> id;
+		file.clear(); // clear/unset end of file flag
+		file.seekg(0, std::ios::beg);// up on the begin of the file
+		
+		//TODO remove the ligne select 
+		
+	}
+	else //if open fail
+	{
+		std::cerr << "Open the File it's impossible !" << std::endl;
+		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
+	}
+
 	system("PAUSE");
 	return 0;
 }
@@ -220,80 +225,10 @@ int Menu::ChooseNewWord() // TODO make a way to put content in the HIDDEN_WORD f
 
 
 
-
-
-
-
-
-
-
-void Menu::SelectWord()
-{
-	int menu;
-	int word;
-	do 
-	{
-		//TODO create a table with the content of my list isogram with the number in ID 
-		/*
-		std::ifstream file("../Isograms.txt");
-		std:: a <int> b (
-			std::istream_iterator<int>(file),
-			std::istream_iterator<int>{});
-		*/
-		
-		//TODO table of 10 word
-		//TODO insert world in the cases of the table
-		 
-
-		std::cout << "Select the number to put the word in the list" << std::endl;
-		std::cout << "There are " << number << " words in the list" << std::endl;
-		std::cin >> menu;
-		std::cout << std::endl;
-		switch (menu)
-		{
-		case 1:
-			std::cout << "you select 1" << std::endl;
-			//TODO take case one of the table (index 0)
-			//TODO insert the value on the first place in the list
-			std::cin >> word;
-			break;
-		case 2:
-			std::cout << "you select 2" << std::endl;
-			//TODO take case 2
-			break;
-		case 3:
-			std::cout << "you select 3" << std::endl;
-			break;
-		case 4:
-			std::cout << "you select 4" << std::endl;
-			break;
-		case 5:
-			std::cout << "you select 5" << std::endl;
-			break;
-		case 6:
-			std::cout << "you select 6" << std::endl;
-			break;
-		}
-	} while (menu != 0);
-	//NOTE how to generate case if there is more word automaticly ? 
-	//NOTE Generat a struture that take in parameter the number of the word in the list, 
-	//from the table, that struture is a boucle with a case that insert the word in the "hidden" variable 
-
-}
-
-
-
-
-
-void Menu::ClearCons()
-{
-	std::system("cls");
-}
-
 void Menu::ViewStats()
 {
 	{
-		std::ifstream file("../save.txt", std::ios::in);  //open the file
+		std::ifstream file("../stat.txt", std::ios::in);  //open the file
 		if (file)
 		{
 			std::string ligne;

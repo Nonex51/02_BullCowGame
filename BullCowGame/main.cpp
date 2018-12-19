@@ -153,12 +153,11 @@ void DisplayMenu()
 			DisplayMenu();
 			break;
 
-		case 1:	do {				//NOTE when you valide you choice in the menu the game think that you have put one try, why ?
+		case 1:	do {				//NOTE when you valide you choice in the menu the game think that you have put one try, why ? 
 			MenuInst.ClearCons();
-			
 			MenuInst.Intro();
 			GameIntro();
-			std::cin.ignore(1,' ');
+			std::cin.ignore(1,' ');		// NOTE this ignore ONE caracter 
 			PlayGame();
 			bPlayAgain = AskToPlayAgain();
 		} while (bPlayAgain);
