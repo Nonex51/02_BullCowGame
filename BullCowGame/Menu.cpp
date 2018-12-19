@@ -104,9 +104,6 @@ std::string confirm;
 }
 
 
-
-
-
 int Menu::ChooseNewWord()
 {
 	std::ifstream file("../save.txt", std::ios::in);  //open the file
@@ -158,7 +155,7 @@ int Menu::ChooseNewWord()
 		//NOTE to erase a single element, vec.erase(iterator), to erase multiple elements vec.erase(from, to). 
 		//remove and remove_if to shuffle the ones you want to remove to the end, so that they can be erased in one go
 
-		//TODO clear the file before to register the new list
+		
 
 			std::ofstream file("../save.txt", std::ios::out | std::ios::trunc); // open the file
 			file.clear(); // clear/unset end of file flag
@@ -190,7 +187,7 @@ int Menu::RemoveWord()
 	{
 		std::string ligne;
 		int num_ligne = 0;
-		int id = 0;
+		int Line_to_Erase = 0;
 		ClearCons();
 		std::cout << " ==================== BULL & COW ====================\n" << std::endl;
 		std::cout << " ----------------------DELETES-----------------------\n" << std::endl;
@@ -202,23 +199,63 @@ int Menu::RemoveWord()
 		}
 		std::cout << " --------------------- End Liste --------------------\n" << std::endl;
 		std::cout << " Press the number from the word of your choice.\n" << std::endl;
-		std::cin >> id;
+		std::cin >> Line_to_Erase;
 		file.clear(); // clear/unset end of file flag
 		file.seekg(0, std::ios::beg);// up on the begin of the file
-		
-		//TODO remove the ligne select 
-		/*
+		int num_lignebackup = Line_to_Erase - 1;
+
+		// Initialisation table 	
+		std::vector<FString> tab(num_ligne);
+
+		for (int i = 0; i < num_ligne; i++)
+		{
+			file >> tab[i];
+		}
+
+		file.close();
+		tab.erase(tab.begin() + num_lignebackup);
+		int nbr_line = num_ligne - 1;
 		std::ofstream file("../save.txt", std::ios::out | std::ios::trunc); // open the file
-			file.clear(); // clear/unset end of file flag
-			
+		file.clear(); // clear/unset end of file flag
+		for (int i = 0; i < nbr_line -1; i++)
+		{
+			FString word = tab[i];
+			file << word << std::endl;
+		}
+
+		file.close();
+
+
+		/*
+		
 			for (int i = 0; i < num_ligne; i++)
 			{
-				FString word = tabbackup[i];
-				file << word << std::endl;
+				
+
+				if (Line_to_Erase == i)
+				{
+					std::cout << " do nothing" << std::endl;
+				}
+				else {
+					file >> tab[i];
+				}
 			}
-			file.close();
-		*/
+			tab.erase(tab.begin() + id);
 		
+		file.close();
+
+
+		
+
+*/
+
+
+
+
+
+
+
+
 	}
 	else //if open fail
 	{
@@ -229,6 +266,30 @@ int Menu::RemoveWord()
 	system("PAUSE");
 	return 0;
 }
+
+/*void Erase_Line(char* file, int Line_to_Erase)
+{
+	std::string Buffer = ""; //Variable contenant le texte à réécrire dans le fichier
+	std::ifstream ReadFile(file);
+	if (ReadFile) //Si le fichier est trouvé
+	{
+		std::string line;
+		int Line = 0;
+		while (std::getline(ReadFile, line)) //on parcours le fichier et on initialise line à la ligne actuelle
+		{
+			Line++;
+			if (Line != Line_to_Erase) //Si la ligne atteinte est différente de la ligne à supprimer...
+				Buffer += line + "\n"; //On ajoute le contenu de la ligne dans le contenu à réécrire
+		}
+	}
+	ReadFile.close(); //On ferme le fichier en lecture
+
+	std::ofstream WriteFile(File); //On ouvre ce même fichier en écriture
+	WriteFile << Buffer; //On écris le texte dedans
+	WriteFile.close(); //et on ferme le fichier
+}*/
+
+
 
 
 

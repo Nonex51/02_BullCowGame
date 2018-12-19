@@ -14,6 +14,7 @@ public:
 	void ClearCons();
 	void ViewStats();
 	void ShowMenu();
+	void Erase_Line();
 	
 	int AddNewWord();
 	int RemoveWord();
@@ -21,5 +22,6 @@ public:
 	
 
 private:
+	FString file = "../save.txt";
 
 }; 
