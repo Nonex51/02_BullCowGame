@@ -95,6 +95,7 @@ std::string confirm;
 	{
 		file << word << std::endl;
 		file.close();
+		ClearCons();
 		std::cout << " \" " << word << " \" "<< " It's add in the list\n\n" << std::endl;
 	}
 	else
@@ -136,7 +137,6 @@ int Menu::ChooseNewWord()
 		for (int i = 0; i < num_ligne; i++)
 		{
 			file >> tab[i];
-			std::cout << tab[i] << std::endl;
 		}
 		file.close();
 
@@ -160,7 +160,7 @@ int Menu::ChooseNewWord()
 
 		//TODO clear the file before to register the new list
 
-			std::ofstream file("../save.txt", std::ios::out | std::ios::app); // open the file
+			std::ofstream file("../save.txt", std::ios::out | std::ios::trunc); // open the file
 			file.clear(); // clear/unset end of file flag
 			
 			for (int i = 0; i < num_ligne; i++)
@@ -170,7 +170,8 @@ int Menu::ChooseNewWord()
 			}
 			file.close();
 			
-			//TODO verification with the access file with save.txt or isogram.txt		
+			//TODO verification with the access file with save.txt or isogram.txt	
+			ClearCons();
 			std::cout << "\n You have move " << tabbackup[0] << " in the first position.\n" << std::endl;
 	}
 	else //if open fail
@@ -178,15 +179,12 @@ int Menu::ChooseNewWord()
 		std::cerr << "Open the File it's impossible !" << std::endl;
 		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 	}
-	
-	system("PAUSE");
+	//system("PAUSE");
 	return 0;
 }
 
 int Menu::RemoveWord()
 {
-	
-
 	std::ifstream file("../save.txt", std::ios::in);  //open the file
 	if (file)
 	{
@@ -209,6 +207,17 @@ int Menu::RemoveWord()
 		file.seekg(0, std::ios::beg);// up on the begin of the file
 		
 		//TODO remove the ligne select 
+		/*
+		std::ofstream file("../save.txt", std::ios::out | std::ios::trunc); // open the file
+			file.clear(); // clear/unset end of file flag
+			
+			for (int i = 0; i < num_ligne; i++)
+			{
+				FString word = tabbackup[i];
+				file << word << std::endl;
+			}
+			file.close();
+		*/
 		
 	}
 	else //if open fail
@@ -220,8 +229,6 @@ int Menu::RemoveWord()
 	system("PAUSE");
 	return 0;
 }
-
-
 
 
 
@@ -254,6 +261,6 @@ void Menu::ViewStats()
 }
 
 
-
+//NOTE if you lunch the game, you can cheat if you look the word before
 
 
