@@ -11,6 +11,7 @@ user interaction. For game logic see the FBullCowGame class.
 #include "time.h"
 #include <fstream>
 #include <limits>
+#include <stdexcept>
 
 
 //to make syntax unreal friendly
@@ -32,10 +33,12 @@ Menu MenuInst;
 
 int main()
 {
-	//MenuInst.ShowMenu();
+	
 	DisplayMenu();
 	return 0; // exit the application
 }
+
+
 
 void PlayGame()
 {
@@ -109,12 +112,13 @@ bool AskToPlayAgain()
 	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
 
+
 void PrintGameSummary()
 {
 	if (BCGame.IsGameWon())
 	{
 		std::cout << "WELL DONE - YOU WIN!\n";
-		//BCGame.SaveScore();
+		BCGame.SaveScore();
 	}
 	else
 	{
@@ -124,6 +128,7 @@ void PrintGameSummary()
 
 void GameIntro()
 {
+	//NOTE I need to lunch 2 times the game to have the correct number in the lenght word
 	std::cout << "Can you guess the " <<BCGame.GetHiddenWordLength();
 	std::cout << " letter isogram I'm thinking of?\n";
 	std::cout << std::endl;
@@ -147,33 +152,38 @@ void DisplayMenu()
 		case 0:
 			MenuInst.ClearCons();
 			std::cout << "   \n\n \n\n  Please, Press the number of your choice and press Enter" << std::endl;
-			_sleep(2500);
+			_sleep(1500);
 			MenuInst.ClearCons();
-			
 			DisplayMenu();
 			break;
 
-		case 1:	do {				//NOTE when you valide you choice in the menu the game think that you have put one try, why ? 
+		case 1:	do {
 			MenuInst.ClearCons();
 			MenuInst.Intro();
 			GameIntro();
 			std::cin.ignore(1,' ');		// NOTE this ignore ONE caracter 
 			PlayGame();
 			bPlayAgain = AskToPlayAgain();
+			DisplayMenu();
 		} while (bPlayAgain);
 			break;
 
 		case 2:
 			MenuInst.ClearCons();
 			MenuInst.NewWordMenu();
+			MenuInst.ClearCons();
+			DisplayMenu();
 			break;
 
 		case 3:
 			MenuInst.ClearCons();
 			MenuInst.ViewStats();
+			DisplayMenu();
 			break;
 
 		case 4:std::cout << "Fonctionnality non implement" << std::endl;
+			MenuInst.ClearCons();
+			DisplayMenu();
 			break;
 
 		case 5:
@@ -187,21 +197,19 @@ void DisplayMenu()
 
 /*
 
-fix the issue with the file
-
-
 4. Create functionality to track score of the player. (least number of guesses)
 
 ->5. In the new Main menu, show their last played score and best score out of all the games they've played so far.
 
-6. Create Functionality to save the player's scores in disk.
+
 7. Update the best score in the main menu to read from disk when the game starts and make sure it's shown in the Main Menu
 
 ->8. Create Functionality to clear game scores on disk.
 */
 
 
-
+//BUG Verif and controle each inuput of the player ! 
+//to mmove in the menu, strange comportement 
 
 
 

@@ -11,11 +11,11 @@ using int32 = int;
 FBullCowGame::FBullCowGame() { Reset(); } // default constructor
 
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
-int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
+int32 FBullCowGame::GetHiddenWordLength(){ return MyHiddenWord.length(); } //TODO how to get a new value of MyHiddenWord ?
 bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
 
-int32 FBullCowGame::GetMaxTries() const {
-	TMap < int32, int32 > WordLengthToMaxTries{ {3,5},{4,5},{5,5},{6,5} };  //My Maxtries {Length world . Tries}
+int32 FBullCowGame::GetMaxTries() {
+	TMap < int32, int32 > WordLengthToMaxTries{ {3,5},{4,5},{5,5},{6,5},{7,6},{8,7},{9,8},{10,11},{11,12} };  //My Maxtries {Length world . Tries}
 	return WordLengthToMaxTries[MyHiddenWord.length()];
 }
 
@@ -32,6 +32,7 @@ void FBullCowGame::Reset()
 		MyHiddenWord = HIDDEN_WORD;
 		MyCurrentTry = 1;
 		bGameIsWon = false;
+		file.close();
 		return;
 	}
 	else //if open fail
@@ -43,7 +44,7 @@ void FBullCowGame::Reset()
 
 
 
-EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
+EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess)
 {
 	if (IsNumber(Guess)) 
 	{
@@ -145,16 +146,17 @@ bool FBullCowGame::IsNumber(FString Word) const
 
 void FBullCowGame::SaveScore()
 {														//remplace ios::trunc						// TODO save ligne after ligne not remplace the ligne
-	std::ofstream file("../save.txt", std::ios::out | std::ios::trunc);  // Open with read right 
+	std::ofstream file("../score.txt", std::ios::out | std::ios::trunc);  // Open with read right 
 
 	if (file)
 	{
 		std::string nom = "Guess";																	 //TODO take the name of the actuelle player and put on the screen
 		int Score = MyCurrentTry;
 		int word = MyHiddenWord.length();
-		file << nom << " as retry only " << Score << " to guess the word with " << word <<" letters;"; 
+		file << nom << " as try " << Score << "X to guess the word with " << word <<" letters;"; 
 		file.close();
 	}
 	else
 		std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
 }
+

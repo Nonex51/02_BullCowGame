@@ -16,6 +16,8 @@
 
 int number = 0;
 
+//TODO function Cin() to verif input of the player
+
 void Menu::ClearCons()
 {
 	std::system("cls");
@@ -42,8 +44,8 @@ void Menu::ShowMenu()
 	std::cout << " ==================== BULL & COW ====================\n" << std::endl;
 	std::cout << " ----------------------- MENU -----------------------\n" << std::endl;
 	std::cout << "               1. Start Bull&Cow" << std::endl;
-	std::cout << "               2. Choose a New Word" << std::endl; //TODO under menu to choose between create, look, select in the Isogram.txt list
-	std::cout << "               3. Look the stats" << std::endl; //TODO a function to make some stats about the game or about the player
+	std::cout << "               2. Choose a New Word" << std::endl;
+	std::cout << "               3. Look the stats" << std::endl; 
 	std::cout << "               4. Option" << std::endl; // TODO option menu to choose color
 	std::cout << "               5. Quit" << std::endl;
 	std::cout << " \n\n" << std::endl;
@@ -68,10 +70,15 @@ void Menu::NewWordMenu()
 		std::cout << std::endl;
 		switch (menu)
 			{
+		case 0:
+			
+			break;
 			case 1:
 				ChooseNewWord();
 				break;
 			case 2:
+				 
+				DisplayListe();
 				AddNewWord();
 				break;
 			case 3:std::cout << " " << std::endl;
@@ -79,7 +86,37 @@ void Menu::NewWordMenu()
 				break;
 			}
 	} while (menu != 0);
+	return;
 }
+
+void Menu::DisplayListe()
+{
+	std::ifstream file("../save.txt", std::ios::in);  //open the file
+	if (file)
+	{
+		std::string ligne;
+		int num_ligne = 0;
+		int id = 0;
+		ClearCons();
+		std::cout << " ==================== BULL & COW ====================\n" << std::endl;
+		std::cout << " ---------------------- Liste -----------------------\n" << std::endl;
+		while (getline(file, ligne))
+		{
+			++num_ligne;
+			std::cout << "               " << num_ligne << ". " << ligne << std::endl;
+		}
+		std::cout << " --------------------- End Liste --------------------\n" << std::endl;
+	
+	}
+	else //if open fail
+	{
+		std::cerr << "Open the File it's impossible !" << std::endl;
+		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
+	}
+	//system("PAUSE");
+	return;
+}
+
 
 int Menu::AddNewWord()
 {
@@ -200,6 +237,11 @@ int Menu::RemoveWord()
 		std::cout << " --------------------- End Liste --------------------\n" << std::endl;
 		std::cout << " Press the number from the word of your choice.\n" << std::endl;
 		std::cin >> Line_to_Erase;
+		
+		if (Line_to_Erase != 0)
+		{
+
+		
 		file.clear(); // clear/unset end of file flag
 		file.seekg(0, std::ios::beg);// up on the begin of the file
 		int num_lignebackup = Line_to_Erase - 1;
@@ -224,91 +266,39 @@ int Menu::RemoveWord()
 		}
 
 		file.close();
-
-
-		/*
+		std::cout << "You have remove the word "<< tab[num_lignebackup] << std::endl;
+		}
+		else {
+			std::cout << " back \n" << std::endl;
 		
-			for (int i = 0; i < num_ligne; i++)
-			{
-				
-
-				if (Line_to_Erase == i)
-				{
-					std::cout << " do nothing" << std::endl;
-				}
-				else {
-					file >> tab[i];
-				}
-			}
-			tab.erase(tab.begin() + id);
-		
-		file.close();
-
-
-		
-
-*/
-
-
-
-
-
-
-
-
+		}
 	}
 	else //if open fail
 	{
 		std::cerr << "Open the File it's impossible !" << std::endl;
 		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 	}
-
 	system("PAUSE");
 	return 0;
 }
-
-/*void Erase_Line(char* file, int Line_to_Erase)
-{
-	std::string Buffer = ""; //Variable contenant le texte à réécrire dans le fichier
-	std::ifstream ReadFile(file);
-	if (ReadFile) //Si le fichier est trouvé
-	{
-		std::string line;
-		int Line = 0;
-		while (std::getline(ReadFile, line)) //on parcours le fichier et on initialise line à la ligne actuelle
-		{
-			Line++;
-			if (Line != Line_to_Erase) //Si la ligne atteinte est différente de la ligne à supprimer...
-				Buffer += line + "\n"; //On ajoute le contenu de la ligne dans le contenu à réécrire
-		}
-	}
-	ReadFile.close(); //On ferme le fichier en lecture
-
-	std::ofstream WriteFile(File); //On ouvre ce même fichier en écriture
-	WriteFile << Buffer; //On écris le texte dedans
-	WriteFile.close(); //et on ferme le fichier
-}*/
-
-
-
 
 
 void Menu::ViewStats()
 {
 	{
-		std::ifstream file("../stat.txt", std::ios::in);  //open the file
+		std::ifstream file("../score.txt", std::ios::in);  //open the file
 		if (file)
 		{
 			std::string ligne;
 			int num_ligne = 0;
 			ClearCons();
 			std::cout << " ==================== BULL & COW ====================\n" << std::endl;
-			std::cout << " ---------------------- Score -----------------------\n" << std::endl;
+			std::cout << " ---------------------Last Score --------------------\n" << std::endl;
 
 			while (getline(file, ligne))
 			{
 				++num_ligne;
-				std::cout << "               " << num_ligne << ". " << ligne << std::endl;
+				std::cout << num_ligne <<" . " << ligne << "\n" << std::endl;
 			}
 		}
 		else //if open fail

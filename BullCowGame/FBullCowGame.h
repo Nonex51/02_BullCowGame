@@ -27,17 +27,19 @@ class FBullCowGame
 {
 public:
 	FBullCowGame(); // constructor
-
-	int32 GetMaxTries() const;
+	
+	int32 GetMaxTries();
 	int32 GetCurrentTry() const;
-	int32 GetHiddenWordLength() const;
+	int32 GetHiddenWordLength();
 	bool IsGameWon() const;
-	EGuessStatus CheckGuessValidity(FString) const;
+	EGuessStatus CheckGuessValidity(FString);
 
 	void Reset();
 	FBullCowCount SubmitValidGuess(FString);
 
 	void SaveScore();
+	
+
 	// ^^ Please try and ignore this and focus on the interface above ^^
 private:
 	// see constructor for initialisation
@@ -45,6 +47,7 @@ private:
 	int32 MyMaxTries;
 	FString MyHiddenWord;
 	bool bGameIsWon;
+	
 	
 
 	bool IsIsogram(FString) const;

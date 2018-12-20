@@ -5,6 +5,8 @@
 
 class Menu
 {
+
+	
 public:
 	
 	//methode
@@ -14,7 +16,8 @@ public:
 	void ClearCons();
 	void ViewStats();
 	void ShowMenu();
-	void Erase_Line();
+	
+	void DisplayListe();
 	
 	int AddNewWord();
 	int RemoveWord();
