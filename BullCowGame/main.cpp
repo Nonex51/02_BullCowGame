@@ -178,6 +178,7 @@ void DisplayMenu()
 		case 3:
 			MenuInst.ClearCons();
 			MenuInst.ViewStats();
+			MenuInst.RemoveStats();
 			DisplayMenu();
 			break;
 

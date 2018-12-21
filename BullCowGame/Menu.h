@@ -16,6 +16,7 @@ public:
 	void ClearCons();
 	void ViewStats();
 	void ShowMenu();
+	bool RemoveStats();
 	
 	void DisplayListe();
 	

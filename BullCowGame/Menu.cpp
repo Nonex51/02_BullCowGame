@@ -52,8 +52,6 @@ void Menu::ShowMenu()
 	std::cout << "    Press the number of your choice and press Enter" << std::endl;
 }
 
-
-
 void Menu::NewWordMenu()
 {
 	int menu;
@@ -281,6 +279,69 @@ int Menu::RemoveWord()
 	system("PAUSE");
 	return 0;
 }
+
+bool Menu::RemoveStats()
+{
+	
+
+		std::cout << " Do you want remove the stats ? Y or N \n" << std::endl;
+		std::string Response;
+		std::cin >> Response;
+		if ((Response == "y") || (Response == "Y")) {
+			
+			std::cout << " yes\n" << std::endl;
+		}
+		else {
+			std::cout << "no\n" << std::endl;
+		}
+		
+		return 0;
+	
+}
+
+	/*
+	
+		std::cout << " Do you want remove the stats ? \n" << std::endl;
+		while (getline(file, ligne))
+		{
+			++num_ligne;
+			std::cout << "               " << num_ligne << ". " << ligne << std::endl;
+		}
+		file.clear(); // clear/unset end of file flag
+		file.seekg(0, std::ios::beg);// up on the begin of the file
+		file.close();
+		std::cin >> yes;*/
+
+
+/*
+
+		if(Response[0] == 'y') || (Response[0] == 'Y')
+		{
+
+
+			std::ofstream file("../stat.txt", std::ios::out | std::ios::trunc); // open the file
+			file.clear(); // clear/unset end of file flag
+			file.close();
+			std::ofstream outfile("test1.txt");
+			outfile.close();
+			std::cout << "You have remove the stat " << std::endl;
+		}
+		else {
+			std::cout << " back \n" << std::endl;
+
+		}
+	}
+	else //if open fail
+	{
+		std::cerr << "Open the File it's impossible !" << std::endl;
+		std::cerr << "Make sure that save.txt inside Bulls&Cows folder !" << std::endl;
+	}
+	//system("PAUSE");
+	return;
+}
+*/
+
+		
 
 
 void Menu::ViewStats()
