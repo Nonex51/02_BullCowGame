@@ -288,11 +288,16 @@ bool Menu::RemoveStats()
 		std::string Response;
 		std::cin >> Response;
 		if ((Response == "y") || (Response == "Y")) {
-			
-			std::cout << " yes\n" << std::endl;
+			if (remove("../score.txt") != 0)
+				perror("Error deleting file");
+			else
+				puts("File successfully deleted");
+			std::ofstream outfile("../score.txt");
+			outfile.close();
+			std::cout << "You have remove the stat " << std::endl;
 		}
 		else {
-			std::cout << "no\n" << std::endl;
+			std::cout << "I have do nothing, don't worry\n" << std::endl;
 		}
 		
 		return 0;
