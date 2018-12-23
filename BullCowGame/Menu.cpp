@@ -89,7 +89,7 @@ void Menu::NewWordMenu()
 
 void Menu::DisplayListe()
 {
-	std::ifstream file("../save.txt", std::ios::in);  //open the file
+	std::ifstream file(save, std::ios::in);  //open the file
 	if (file)
 	{
 		std::string ligne;
@@ -121,7 +121,7 @@ int Menu::AddNewWord()
 
 std::string word;
 std::string confirm;
-	std::ofstream file("../save.txt", std::ios::out | std::ios::app); // open the file
+	std::ofstream file(save, std::ios::out | std::ios::app); // open the file
 
 	std::cout << " Enter your new word to add in the list\n " << std::endl;
 	std::cin >> word;
@@ -141,7 +141,7 @@ std::string confirm;
 
 int Menu::ChooseNewWord()
 {
-	std::ifstream file("../save.txt", std::ios::in);  //open the file
+	std::ifstream file(save, std::ios::in);  //open the file
 	if (file)
 	{
 		std::string ligne;
@@ -192,7 +192,7 @@ int Menu::ChooseNewWord()
 
 		
 
-			std::ofstream file("../save.txt", std::ios::out | std::ios::trunc); // open the file
+			std::ofstream file(save, std::ios::out | std::ios::trunc); // open the file
 			file.clear(); // clear/unset end of file flag
 			
 			for (int i = 0; i < num_ligne; i++)
@@ -217,7 +217,7 @@ int Menu::ChooseNewWord()
 
 int Menu::RemoveWord()
 {
-	std::ifstream file("../save.txt", std::ios::in);  //open the file
+	std::ifstream file(save, std::ios::in);  //open the file
 	if (file)
 	{
 		std::string ligne;
@@ -255,7 +255,7 @@ int Menu::RemoveWord()
 		file.close();
 		tab.erase(tab.begin() + num_lignebackup);
 		int nbr_line = num_ligne - 1;
-		std::ofstream file("../save.txt", std::ios::out | std::ios::trunc); // open the file
+		std::ofstream file(save, std::ios::out | std::ios::trunc); // open the file
 		file.clear(); // clear/unset end of file flag
 		for (int i = 0; i < nbr_line -1; i++)
 		{
@@ -292,7 +292,7 @@ bool Menu::RemoveStats()
 				perror("Error deleting file");
 			else
 				puts("File successfully deleted");
-			std::ofstream outfile("../score.txt");
+			std::ofstream outfile(score);
 			outfile.close();
 			std::cout << "You have remove the stat " << std::endl;
 		}
@@ -352,7 +352,7 @@ bool Menu::RemoveStats()
 void Menu::ViewStats()
 {
 	{
-		std::ifstream file("../score.txt", std::ios::in);  //open the file
+		std::ifstream file(score, std::ios::in);  //open the file
 		if (file)
 		{
 			std::string ligne;

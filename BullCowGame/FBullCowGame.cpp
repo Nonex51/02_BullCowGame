@@ -146,7 +146,7 @@ bool FBullCowGame::IsNumber(FString Word) const
 
 void FBullCowGame::SaveScore()
 {														//remplace ios::trunc						// TODO save ligne after ligne not remplace the ligne
-	std::ofstream file("../score.txt", std::ios::out | std::ios::trunc);  // Open with read right 
+	std::ofstream file("../score.txt", std::ios::out /*| std::ios::trunc*/);  // Open with read right 
 
 	if (file)
 	{

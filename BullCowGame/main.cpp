@@ -28,17 +28,15 @@ void PrintGameSummary();
 void DisplayMenu();
 void GameIntro();
 
+
 FBullCowGame BCGame; 
 Menu MenuInst;
 
 int main()
 {
-	
 	DisplayMenu();
 	return 0; // exit the application
 }
-
-
 
 void PlayGame()
 {
@@ -137,6 +135,7 @@ void GameIntro()
 
 
 
+
 void DisplayMenu() 
 {
 	int varmenu;
@@ -188,9 +187,8 @@ void DisplayMenu()
 			break;
 
 		case 5:
+		
 			return;
-			break;
-
 		}
 
 	} while (varmenu != 0);

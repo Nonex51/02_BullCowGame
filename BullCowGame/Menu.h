@@ -26,6 +26,8 @@ public:
 	
 
 private:
-	FString file = "../save.txt";
+	FString save = "../save.txt";
+	FString score = "../score.txt";
+	
 
 }; 
