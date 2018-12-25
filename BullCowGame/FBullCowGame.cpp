@@ -149,14 +149,11 @@ bool FBullCowGame::IsNumber(FString Word) const
 
 void FBullCowGame::SaveScore()
 {
-	//std::vector<FString> tab[10];
 	int num_ligne = 0;
 	std::ifstream file("../score.txt", std::ios::in);  //open the file
 	if (file)
 	{
 		std::string ligne;
-
-
 		while (getline(file, ligne))
 		{
 			++num_ligne;
@@ -164,48 +161,19 @@ void FBullCowGame::SaveScore()
 		}
 		std::vector<FString> tab(num_ligne);
 		
-
 		for (int i = 0; i < num_ligne; i++)
-		{
-			
+		{	
 			file >> tab[i];
 		}
 		file.close();
 
-
-		/*
-		for (int i = 0; i < num_ligne; i++)
-		{
-			++i;
-			file >> tab[i];
-		}
-		file.close();
-
-		
-		for (int i = 0; i < num_ligne; i++)
-		{
-			file >> tab[i];
-		}
-		file.close();
-		
-
-			while (getline(file, ligne))
-		{
-			++i;
-			file >> tab[i];
-		}
-		file.close();
-		*/
-
-		std::ofstream file("../score.txt", std::ios::out | std::ios::app);  // Open with read right 
+	std::ofstream file("../score.txt", std::ios::out | std::ios::app);  // Open with read right 
 
 		if (file)
 		{
-
 			std::string nom = "Guess";
 			int Score = MyCurrentTry;
 			int word = MyHiddenWord.length();
-
 			for (int i = 0; i < num_ligne; i++)
 			{
 				file << tab[i];
@@ -215,40 +183,11 @@ void FBullCowGame::SaveScore()
 		}
 		else
 			std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
-
 	}
 	else //if open fail
 	{
 		std::cerr << "Open the File it's impossible !" << std::endl;
 		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 	}
-
 }
 	
-/*
-
-int Menu::AddNewWord()
-{
-
-	std::string word;
-	std::string confirm;
-	std::ofstream file(save, std::ios::out | std::ios::app); // open the file
-
-	std::cout << " Enter your new word to add in the list\n " << std::endl;
-	std::cin >> word;
-
-	if (std::getline(std::cin, confirm))
-	{
-		file << word << std::endl;
-		file.close();
-		ClearCons();
-		std::cout << " \" " << word << " \" " << " It's add in the list\n\n" << std::endl;
-	}
-	else
-		std::cerr << "Open the file it's impossible or write something!\n" << std::endl;
-	return 0;
-}
-
-
-
-*/
