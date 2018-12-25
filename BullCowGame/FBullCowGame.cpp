@@ -167,7 +167,7 @@ void FBullCowGame::SaveScore()
 
 		for (int i = 0; i < num_ligne; i++)
 		{
-			++i;
+			
 			file >> tab[i];
 		}
 		file.close();
