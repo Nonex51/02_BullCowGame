@@ -1,8 +1,6 @@
+children
 dog
-science
-compagny
 bed
 house
-children
+compagny
 smartphone
-computer

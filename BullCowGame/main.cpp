@@ -130,7 +130,7 @@ void GameIntro()
 {
 	//NOTE I need to lunch 2 times the game to have the correct number in the lenght word
 	std::cout << "Can you guess the " <<BCGame.GetHiddenWordLength();
-	std::cout << " letter isogram I'm thinking of?\n";
+	std::cout << " letter Word I'm thinking of?\n";
 	std::cout << std::endl;
 }
 
@@ -206,7 +206,7 @@ void DisplayMenu()
 
 
 //BUG Verif and controle each inuput of the player ! 
-//to mmove in the menu, strange comportement 
+//to move in the menu, strange comportement 
 
 
 

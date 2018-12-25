@@ -348,6 +348,7 @@ int color() {
 }
 
 */
+
 int a = 0;
 
 void Menu::Pointeur()
