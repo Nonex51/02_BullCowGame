@@ -3,6 +3,7 @@
 #include "FBullCowGame.h"
 #include <fstream>
 #include <iostream>
+#include <vector>
 #include <map>
 #define TMap std::map
 
@@ -144,19 +145,110 @@ bool FBullCowGame::IsNumber(FString Word) const
 	return true;
 }
 
-void FBullCowGame::SaveScore()
-{														//remplace ios::trunc						// TODO save ligne after ligne not remplace the ligne
-	std::ofstream file("../score.txt", std::ios::out /*| std::ios::trunc*/);  // Open with read right 
 
+
+void FBullCowGame::SaveScore()
+{
+	//std::vector<FString> tab[10];
+	int num_ligne = 0;
+	std::ifstream file("../score.txt", std::ios::in);  //open the file
 	if (file)
 	{
-		std::string nom = "Guess";																	 //TODO take the name of the actuelle player and put on the screen
-		int Score = MyCurrentTry;
-		int word = MyHiddenWord.length();
-		file << nom << " as try " << Score << "X to guess the word with " << word <<" letters;"; 
+		std::string ligne;
+
+
+		while (getline(file, ligne))
+		{
+			++num_ligne;
+			std::cout << num_ligne << " . " << ligne << "\n" << std::endl;
+		}
+		std::vector<FString> tab(num_ligne);
+		
+
+		for (int i = 0; i < num_ligne; i++)
+		{
+			++i;
+			file >> tab[i];
+		}
 		file.close();
+
+
+		/*
+		for (int i = 0; i < num_ligne; i++)
+		{
+			++i;
+			file >> tab[i];
+		}
+		file.close();
+
+		
+		for (int i = 0; i < num_ligne; i++)
+		{
+			file >> tab[i];
+		}
+		file.close();
+		
+
+			while (getline(file, ligne))
+		{
+			++i;
+			file >> tab[i];
+		}
+		file.close();
+		*/
+
+		std::ofstream file("../score.txt", std::ios::out | std::ios::app);  // Open with read right 
+
+		if (file)
+		{
+
+			std::string nom = "Guess";
+			int Score = MyCurrentTry;
+			int word = MyHiddenWord.length();
+
+			for (int i = 0; i < num_ligne; i++)
+			{
+				file << tab[i];
+			}
+			file << nom << " as try " << Score << "X to guess the word with " << word << " letters;" << std::endl;
+			file.close();
+		}
+		else
+			std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+
+	}
+	else //if open fail
+	{
+		std::cerr << "Open the File it's impossible !" << std::endl;
+		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
+	}
+
+}
+	
+/*
+
+int Menu::AddNewWord()
+{
+
+	std::string word;
+	std::string confirm;
+	std::ofstream file(save, std::ios::out | std::ios::app); // open the file
+
+	std::cout << " Enter your new word to add in the list\n " << std::endl;
+	std::cin >> word;
+
+	if (std::getline(std::cin, confirm))
+	{
+		file << word << std::endl;
+		file.close();
+		ClearCons();
+		std::cout << " \" " << word << " \" " << " It's add in the list\n\n" << std::endl;
 	}
 	else
-		std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+		std::cerr << "Open the file it's impossible or write something!\n" << std::endl;
+	return 0;
 }
 
+
+
+*/
