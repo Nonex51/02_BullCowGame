@@ -11,8 +11,10 @@
 #include <string.h>
 #include <list>
 #include <algorithm>
+//#include <windows.h>
 #include "Menu.h"
 #include "FBullCowGame.h"
+
 
 int number = 0;
 
@@ -138,7 +140,6 @@ std::string confirm;
 	return 0;
 }
 
-
 int Menu::ChooseNewWord()
 {
 	std::ifstream file(save, std::ios::in);  //open the file
@@ -183,14 +184,11 @@ int Menu::ChooseNewWord()
 			tabbackup[j] = tab[i];	
 		}
 
-		
 		tabbackup.erase(tabbackup.begin() + id);// erase the empty container
 		tabbackup[0] = tab[wordselect]; //put the word in the first place
 
 		//NOTE to erase a single element, vec.erase(iterator), to erase multiple elements vec.erase(from, to). 
 		//remove and remove_if to shuffle the ones you want to remove to the end, so that they can be erased in one go
-
-		
 
 			std::ofstream file(save, std::ios::out | std::ios::trunc); // open the file
 			file.clear(); // clear/unset end of file flag
@@ -282,8 +280,6 @@ int Menu::RemoveWord()
 
 bool Menu::RemoveStats()
 {
-	
-
 		std::cout << " Do you want remove the stats ? Y or N \n" << std::endl;
 		std::string Response;
 		std::cin >> Response;
@@ -303,51 +299,6 @@ bool Menu::RemoveStats()
 		return 0;
 	
 }
-
-	/*
-	
-		std::cout << " Do you want remove the stats ? \n" << std::endl;
-		while (getline(file, ligne))
-		{
-			++num_ligne;
-			std::cout << "               " << num_ligne << ". " << ligne << std::endl;
-		}
-		file.clear(); // clear/unset end of file flag
-		file.seekg(0, std::ios::beg);// up on the begin of the file
-		file.close();
-		std::cin >> yes;*/
-
-
-/*
-
-		if(Response[0] == 'y') || (Response[0] == 'Y')
-		{
-
-
-			std::ofstream file("../stat.txt", std::ios::out | std::ios::trunc); // open the file
-			file.clear(); // clear/unset end of file flag
-			file.close();
-			std::ofstream outfile("test1.txt");
-			outfile.close();
-			std::cout << "You have remove the stat " << std::endl;
-		}
-		else {
-			std::cout << " back \n" << std::endl;
-
-		}
-	}
-	else //if open fail
-	{
-		std::cerr << "Open the File it's impossible !" << std::endl;
-		std::cerr << "Make sure that save.txt inside Bulls&Cows folder !" << std::endl;
-	}
-	//system("PAUSE");
-	return;
-}
-*/
-
-		
-
 
 void Menu::ViewStats()
 {
@@ -377,6 +328,43 @@ void Menu::ViewStats()
 
 }
 
+/*
+int color() {
+	HANDLE  hConsole;
+	int k;
+
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	// you can loop k higher to see more color choices
+	for (k = 1; k < 255; k++)
+	{
+		// pick the colorattribute k you want
+		SetConsoleTextAttribute(hConsole, k);
+		std::cout << k << " I want to be nice today!" << std::endl;
+	}
+
+	std::cin.get(); // wait
+	return 0;
+
+}
+
+*/
+int a = 0;
+
+void Menu::Pointeur()
+{
+	
+	std::cout << "Contenu of my Variable: "<< a << std::endl;
+	std::cout << "Adress of my Variable: " << &a << std::endl;
+	std::cout << "\n" << std::endl;
+	std::cout << "Choose the new valeur " << std::endl;
+	std::cin >> a;
+	return;
+
+}
+
+
+
+//TODO function go to search the best score in the score file 
 
 //NOTE if you lunch the game, you can cheat if you look the word before
 

@@ -13,11 +13,9 @@ user interaction. For game logic see the FBullCowGame class.
 #include <limits>
 #include <stdexcept>
 
-
 //to make syntax unreal friendly
 using FText = std::string;
 using int32 = int;
-
 
 //function propotype as outside a class
 
@@ -115,7 +113,6 @@ bool AskToPlayAgain()
 	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
 
-
 void PrintGameSummary()
 {
 	if (BCGame.IsGameWon())
@@ -136,10 +133,6 @@ void GameIntro()
 	std::cout << " letter isogram I'm thinking of?\n";
 	std::cout << std::endl;
 }
-
-
-
-
 
 void DisplayMenu() 
 {
@@ -186,9 +179,9 @@ void DisplayMenu()
 			DisplayMenu();
 			break;
 
-		case 4:std::cout << "Fonctionnality non implement" << std::endl;
-			MenuInst.ClearCons();
-			DisplayMenu();
+		case 4:
+			MenuInst.Pointeur();
+	
 			break;
 
 		case 5:
@@ -208,7 +201,7 @@ void DisplayMenu()
 
 7. Update the best score in the main menu to read from disk when the game starts and make sure it's shown in the Main Menu
 
-->8. Create Functionality to clear game scores on disk.
+
 */
 
 

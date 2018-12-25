@@ -12,7 +12,7 @@ using int32 = int;
 FBullCowGame::FBullCowGame() { Reset(); } // default constructor
 
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
-int32 FBullCowGame::GetHiddenWordLength(){ return MyHiddenWord.length(); } //TODO how to get a new value of MyHiddenWord ?
+int32 FBullCowGame::GetHiddenWordLength(){ return MyHiddenWord.length(); } 
 bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
 
 int32 FBullCowGame::GetMaxTries() {
@@ -42,8 +42,6 @@ void FBullCowGame::Reset()
 		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 	}	
 }
-
-
 
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess)
 {
@@ -144,8 +142,6 @@ bool FBullCowGame::IsNumber(FString Word) const
 		}
 	return true;
 }
-
-
 
 void FBullCowGame::SaveScore()
 {
