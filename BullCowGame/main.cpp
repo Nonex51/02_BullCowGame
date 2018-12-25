@@ -27,15 +27,20 @@ bool AskToPlayAgain();
 void PrintGameSummary();
 void DisplayMenu();
 void GameIntro();
-
+void resolution();
 
 FBullCowGame BCGame; 
 Menu MenuInst;
 
 int main()
 {
+	resolution();
 	DisplayMenu();
 	return 0; // exit the application
+}
+
+void resolution() {
+	system("mode con LINES=25 COLS=60");
 }
 
 void PlayGame()
