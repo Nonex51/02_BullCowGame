@@ -1,6 +1,7 @@
+bed
+computer
+dog
 compagny
 house
-bed
-dog
 children
 smartphone

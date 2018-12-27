@@ -13,6 +13,16 @@ struct FBullCowCount
 	int32 Cows = 0;
 };
 
+
+/*
+struct Score
+{
+
+
+};
+*/
+
+
 enum class EGuessStatus		
 {
 	Number,
@@ -37,13 +47,13 @@ public:
 	void Reset();
 	FBullCowCount SubmitValidGuess(FString);
 
+	//Score SaveScore(FString);
 	void SaveScore();
-	
 
 	// ^^ Please try and ignore this and focus on the interface above ^^
 private:
 	// see constructor for initialisation
-	int32 MyCurrentTry;
+	int32 MyCurrentTr;
 	int32 MyMaxTries;
 	FString MyHiddenWord;
 	//FString PlayerName;
@@ -51,4 +61,5 @@ private:
 	bool IsIsogram(FString) const;
 	bool IsLowercase(FString) const;
 	bool IsNumber(FString) const;
+	//int best score
 };

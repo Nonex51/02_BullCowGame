@@ -186,7 +186,7 @@ void DisplayMenu()
 			break;
 
 		case 5:
-		
+			MenuInst.TrackScore();
 			return;
 		}
 

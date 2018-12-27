@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+
 #define TMap std::map
 
 using int32 = int;

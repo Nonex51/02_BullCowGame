@@ -236,37 +236,32 @@ int Menu::RemoveWord()
 		
 		if (Line_to_Erase != 0)
 		{
+			file.clear(); // clear/unset end of file flag
+			file.seekg(0, std::ios::beg);// up on the begin of the file
+			int num_lignebackup = Line_to_Erase - 1;
 
-		
-		file.clear(); // clear/unset end of file flag
-		file.seekg(0, std::ios::beg);// up on the begin of the file
-		int num_lignebackup = Line_to_Erase - 1;
+			// Initialisation table 	
+			std::vector<FString> tab(num_ligne);
 
-		// Initialisation table 	
-		std::vector<FString> tab(num_ligne);
-
-		for (int i = 0; i < num_ligne; i++)
-		{
-			file >> tab[i];
-		}
-
-		file.close();
-		tab.erase(tab.begin() + num_lignebackup);
-		int nbr_line = num_ligne - 1;
-		std::ofstream file(save, std::ios::out | std::ios::trunc); // open the file
-		file.clear(); // clear/unset end of file flag
-		for (int i = 0; i < nbr_line -1; i++)
-		{
-			FString word = tab[i];
-			file << word << std::endl;
-		}
-
-		file.close();
-		std::cout << "You have remove the word "<< tab[num_lignebackup] << std::endl;
-		}
+			for (int i = 0; i < num_ligne; i++)
+			{
+				file >> tab[i];
+			}
+			file.close();
+			tab.erase(tab.begin() + num_lignebackup);
+			int nbr_line = num_ligne - 1;
+			std::ofstream file(save, std::ios::out | std::ios::trunc); // open the file
+			file.clear(); // clear/unset end of file flag
+			for (int i = 0; i < nbr_line -1; i++)
+			{
+				FString word = tab[i];
+				file << word << std::endl;
+			}
+			file.close();
+			std::cout << "You have remove the word "<< tab[num_lignebackup] << std::endl;
+			}
 		else {
 			std::cout << " back \n" << std::endl;
-		
 		}
 	}
 	else //if open fail
@@ -401,6 +396,37 @@ void Menu::color()
 //TODO function go to search the best score in the score file 
 void Menu::TrackScore()
 {
+	int num_ligne = 0;
+	std::string ligne;
+	int i = 0;
+
+	std::ifstream file(score, std::ios::in);  //open the file
+	if (file)
+	{
+		while (getline(file, ligne)) { ++num_ligne; }
+		file.clear();
+		file.close();
+		std::vector<char> tab(num_ligne);
+		std::ifstream file(score, std::ios::in);
+		while (getline(file, ligne))
+		{
+			i++;
+			 tab[i] = 2;
+
+		}
+		file.clear();
+	}
+	
+
+
+	else //if open fail
+	{
+		std::cerr << "Open the File it's impossible !" << std::endl;
+		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
+	}
+	return;
+
+
 	//TODO
 	//Read the file, search the same word,
 	//	Get the best score 
