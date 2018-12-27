@@ -11,9 +11,9 @@
 #include <string.h>
 #include <list>
 #include <algorithm>
-//#include <windows.h>
 #include "Menu.h"
 #include "FBullCowGame.h"
+//#include <Windows.h>
 
 
 int number = 0;
@@ -328,7 +328,68 @@ void Menu::ViewStats()
 
 }
 
+void Menu::color()
+{
+	int menu;
+	do {
+		std::cout << " ==================== BULL & COW ====================\n" << std::endl;
+		std::cout << " ---------------- Choose the color ------------------\n" << std::endl;
+		std::cout << "               1. Blue" << std::endl;
+		std::cout << "               2. Green" << std::endl;
+		std::cout << "               3. Gray" << std::endl;
+		std::cout << "               4. Red" << std::endl;
+		std::cout << "               5. Violet" << std::endl;
+		std::cout << "               6. Yellow" << std::endl;
+		std::cout << "               7. Green" << std::endl;
+		std::cout << "               8. Blue" << std::endl;
+		std::cout << "               9. Salmon" << std::endl;
+		std::cout << "               0. Exit" << std::endl;
+		std::cout << " \n\n" << std::endl;
+		std::cout << "    Press the number of your choice and press Enter" << std::endl;
+		std::cin >> menu;
+		std::cout << std::endl;
+		switch (menu)
+		{
+		case 0:
+
+			break;
+		case 1:
+			system("Color 1A");
+			break;
+		case 2:
+			system("Color 2B");
+			break;
+		case 3:
+			system("Color 3C");
+			break;
+		case 4:
+			system("Color 4D");
+			break;
+		case 5:
+			system("Color 5E");
+			break;
+		case 6:
+			system("Color 6F");
+			break;
+		case 7:
+			system("Color A1");
+			break;
+		case 8:
+			system("Color B2");
+			break;
+		case 9:
+			system("Color C3");
+			//system("Color D4");
+			//system("Color E5");
+			//system("Color F6");
+			break;
+		}
+	} while (menu != 0);
+	return;
+}
+
 /*
+
 int color() {
 	HANDLE  hConsole;
 	int k;
@@ -346,11 +407,11 @@ int color() {
 	return 0;
 
 }
-
 */
 
-int a = 0;
 
+
+int a = 0;
 void Menu::Pointeur()
 {
 	
@@ -359,14 +420,17 @@ void Menu::Pointeur()
 	std::cout << "\n" << std::endl;
 	std::cout << "Choose the new valeur " << std::endl;
 	std::cin >> a;
-	return;
+
+
+	
+	
+		return;
+
 
 }
 
 
 
 //TODO function go to search the best score in the score file 
-
-//NOTE if you lunch the game, you can cheat if you look the word before
 
 
