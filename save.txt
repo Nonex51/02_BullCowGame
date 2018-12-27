@@ -1,6 +1,6 @@
-children
-dog
-bed
-house
 compagny
+house
+bed
+dog
+children
 smartphone

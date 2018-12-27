@@ -129,6 +129,7 @@ void PrintGameSummary()
 void GameIntro()
 {
 	//NOTE I need to lunch 2 times the game to have the correct number in the lenght word
+	BCGame.Reset();
 	std::cout << "Can you guess the " <<BCGame.GetHiddenWordLength();
 	std::cout << " letter Word I'm thinking of?\n";
 	std::cout << std::endl;
