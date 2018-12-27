@@ -20,9 +20,9 @@ public:
 	int AddNewWord();
 	int RemoveWord();
 	int ChooseNewWord();
-	//int color();
 	void color();
-	void Pointeur();
+	//void Pointeur();
+	void TrackScore();
 	
 
 private:

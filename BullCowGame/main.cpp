@@ -180,7 +180,7 @@ void DisplayMenu()
 			break;
 
 		case 4:
-			//MenuInst.Pointeur();
+			MenuInst.ClearCons();
 			MenuInst.color();
 	
 			break;
@@ -196,6 +196,9 @@ void DisplayMenu()
 /*
 
 4. Create functionality to track score of the player. (least number of guesses)
+for this word
+the best score is
+obtained by "guess""
 
 ->5. In the new Main menu, show their last played score and best score out of all the games they've played so far.
 

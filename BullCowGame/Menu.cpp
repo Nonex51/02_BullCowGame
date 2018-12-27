@@ -331,6 +331,8 @@ void Menu::ViewStats()
 void Menu::color()
 {
 	int menu;
+	FString back;
+	FString letter;
 	do {
 		std::cout << " ==================== BULL & COW ====================\n" << std::endl;
 		std::cout << " ---------------- Choose the color ------------------\n" << std::endl;
@@ -342,7 +344,7 @@ void Menu::color()
 		std::cout << "               6. Yellow" << std::endl;
 		std::cout << "               7. Green" << std::endl;
 		std::cout << "               8. Blue" << std::endl;
-		std::cout << "               9. Salmon" << std::endl;
+		std::cout << "               9. Salmon" << std::endl;	//Make your MixColor
 		std::cout << "               0. Exit" << std::endl;
 		std::cout << " \n\n" << std::endl;
 		std::cout << "    Press the number of your choice and press Enter" << std::endl;
@@ -378,6 +380,13 @@ void Menu::color()
 			system("Color B2");
 			break;
 		case 9:
+			/*
+			std::cout << "Choose background color" << std::endl;
+			std::cin >> back;
+			std::cout << "Choose letter color" << std::endl;
+			std::cin >> letter;
+			system("Color *back* *letter*");
+			*/
 			system("Color C3");
 			//system("Color D4");
 			//system("Color E5");
@@ -388,49 +397,31 @@ void Menu::color()
 	return;
 }
 
-/*
 
-int color() {
-	HANDLE  hConsole;
-	int k;
-
-	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	// you can loop k higher to see more color choices
-	for (k = 1; k < 255; k++)
-	{
-		// pick the colorattribute k you want
-		SetConsoleTextAttribute(hConsole, k);
-		std::cout << k << " I want to be nice today!" << std::endl;
-	}
-
-	std::cin.get(); // wait
-	return 0;
-
+//TODO function go to search the best score in the score file 
+void Menu::TrackScore()
+{
+	//TODO
+	//Read the file, search the same word,
+	//	Get the best score 
+	//	Get the name of the guess
+	//	Screen the score in game 
 }
-*/
 
-
-
+/*
 int a = 0;
 void Menu::Pointeur()
-{
-	
+{	
 	std::cout << "Contenu of my Variable: "<< a << std::endl;
 	std::cout << "Adress of my Variable: " << &a << std::endl;
 	std::cout << "\n" << std::endl;
 	std::cout << "Choose the new valeur " << std::endl;
 	std::cin >> a;
-
-
-	
-	
 		return;
-
-
 }
+*/
 
 
 
-//TODO function go to search the best score in the score file 
 
 

@@ -1,2 +1,3 @@
 Guess as try 2X to guess the word with 5 letters;
 Guess as try 2X to guess the word with 8 letters;
+Guess as try 2X to guess the word with 8 letters;
