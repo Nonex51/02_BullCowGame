@@ -144,8 +144,10 @@ bool FBullCowGame::IsNumber(FString Word) const
 	return true;
 }
 
-void FBullCowGame::SaveScore()
+//void FBullCowGame::SaveScore()
+Score FBullCowGame::SaveScore(FString NamePlayer)
 {
+	Score score;
 	int num_ligne = 0;
 	std::ifstream file("../score.txt", std::ios::in);  //open the file
 	if (file)
@@ -168,14 +170,15 @@ void FBullCowGame::SaveScore()
 
 		if (file)
 		{
-			std::string nom = "Guess";
-			int Score = MyCurrentTry;
+			
+			int Score = MyCurrentTry -1;
 			int word = MyHiddenWord.length();
 			for (int i = 0; i < num_ligne; i++)
 			{
 				file << tab[i];
 			}
-			file << nom << " as try " << Score << "X to guess the word with " << word << " letters;" << std::endl;
+			//file << score.NamePlayer << " as try " << Score << "X to guess the word with " << word << " letters;" << std::endl;
+			file << score.NamePlayer << "|" << Score << "|" << word << std::endl;
 			file.close();
 		}
 		else
@@ -186,5 +189,6 @@ void FBullCowGame::SaveScore()
 		std::cerr << "Open the File it's impossible !" << std::endl;
 		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 	}
+	return Score();
 }
 	

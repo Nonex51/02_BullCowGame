@@ -14,13 +14,13 @@ struct FBullCowCount
 };
 
 
-/*
+
 struct Score
 {
-
+	FString NamePlayer = "Player";
 
 };
-*/
+
 
 
 enum class EGuessStatus		
@@ -47,13 +47,13 @@ public:
 	void Reset();
 	FBullCowCount SubmitValidGuess(FString);
 
-	//Score SaveScore(FString);
-	void SaveScore();
+	Score SaveScore(FString);
+	//void SaveScore();
 
 	// ^^ Please try and ignore this and focus on the interface above ^^
 private:
 	// see constructor for initialisation
-	int32 MyCurrentTr;
+	int32 MyCurrentTry;
 	int32 MyMaxTries;
 	FString MyHiddenWord;
 	//FString PlayerName;
@@ -62,4 +62,5 @@ private:
 	bool IsLowercase(FString) const;
 	bool IsNumber(FString) const;
 	//int best score
+	
 };

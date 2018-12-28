@@ -117,8 +117,9 @@ void PrintGameSummary()
 {
 	if (BCGame.IsGameWon())
 	{
+		FString NamePlayer = "player";
 		std::cout << "WELL DONE - YOU WIN!\n";
-		BCGame.SaveScore();
+		Score score = BCGame.SaveScore(NamePlayer);
 	}
 	else
 	{
@@ -160,7 +161,7 @@ void DisplayMenu()
 			GameIntro();
 			std::cin.ignore(1,' ');		// NOTE this ignore ONE caracter 
 			PlayGame();
-			bPlayAgain = AskToPlayAgain();
+			//bPlayAgain = AskToPlayAgain();
 			DisplayMenu();
 		} while (bPlayAgain);
 			break;
