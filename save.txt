@@ -1,7 +1,7 @@
+dog
+house
 bed
 computer
-dog
 compagny
-house
 children
 smartphone

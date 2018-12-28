@@ -301,17 +301,28 @@ void Menu::ViewStats()
 		std::ifstream file(score, std::ios::in);  //open the file
 		if (file)
 		{
-			std::string ligne;
+			FString ligne;
 			int num_ligne = 0;
 			ClearCons();
 			std::cout << " ==================== BULL & COW ====================\n" << std::endl;
 			std::cout << " ---------------------Last Score --------------------\n" << std::endl;
+			
 
-			while (getline(file, ligne))
+
+
+			while (getline(file, ligne, '|'))
 			{
 				++num_ligne;
-				std::cout << num_ligne <<" . " << ligne << "\n" << std::endl;
+				std::cout << num_ligne << " . " << ligne;
+				getline(file, ligne, '|');
+				std::cout <<  " as win with " << ligne;
+				getline(file, ligne, '|');
+				std::cout <<  " try with " << ligne;
+				std::cout << " letters" << std::endl;
+				std::cin.ignore(1, '\n');
 			}
+			//file.clear(); // clear/unset end of file flag
+				//file.seekg(0, std::ios::beg);// up on the begin of the file
 		}
 		else //if open fail
 		{

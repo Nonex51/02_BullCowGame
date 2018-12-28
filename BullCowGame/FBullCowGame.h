@@ -18,7 +18,7 @@ struct FBullCowCount
 struct Score
 {
 	FString NamePlayer = "Player";
-
+	int score;
 };
 
 

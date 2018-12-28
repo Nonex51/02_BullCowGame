@@ -170,15 +170,14 @@ Score FBullCowGame::SaveScore(FString NamePlayer)
 
 		if (file)
 		{
-			
 			int Score = MyCurrentTry -1;
-			int word = MyHiddenWord.length();
+			int Word = MyHiddenWord.length();
 			for (int i = 0; i < num_ligne; i++)
 			{
 				file << tab[i];
 			}
 			//file << score.NamePlayer << " as try " << Score << "X to guess the word with " << word << " letters;" << std::endl;
-			file << score.NamePlayer << "|" << Score << "|" << word << std::endl;
+			file << score.NamePlayer << "|" << Score << "|" << Word << "|" << std::endl;
 			file.close();
 		}
 		else
