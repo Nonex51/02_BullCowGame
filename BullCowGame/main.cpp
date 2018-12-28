@@ -117,6 +117,7 @@ void PrintGameSummary()
 {
 	if (BCGame.IsGameWon())
 	{
+		MenuInst.ClearCons();
 		FString NamePlayer = "player";
 		std::cout << "WELL DONE - YOU WIN!\n";
 		Score score = BCGame.SaveScore(NamePlayer);

@@ -145,18 +145,18 @@ bool FBullCowGame::IsNumber(FString Word) const
 }
 
 //void FBullCowGame::SaveScore()
-Score FBullCowGame::SaveScore(FString NamePlayer)
+Score FBullCowGame::SaveScore(FString NamePlayer)		//TODO save in a JSON file not  txt
 {
 	Score score;
 	int num_ligne = 0;
-	std::ifstream file("../score.txt", std::ios::in);  //open the file
+	std::ifstream file("../score.txt", std::ios::in);  //open the file, if there is already some score get the all in the buffer (tab)
 	if (file)
 	{
 		std::string ligne;
 		while (getline(file, ligne))
 		{
 			++num_ligne;
-			std::cout << num_ligne << " . " << ligne << "\n" << std::endl;
+		//	std::cout << num_ligne << " . " << ligne << "\n" << std::endl;
 		}
 		std::vector<FString> tab(num_ligne);
 		
@@ -166,7 +166,7 @@ Score FBullCowGame::SaveScore(FString NamePlayer)
 		}
 		file.close();
 
-	std::ofstream file("../score.txt", std::ios::out | std::ios::app);  // Open with read right 
+	std::ofstream file("../score.txt", std::ios::out | std::ios::app);  
 
 		if (file)
 		{
@@ -177,7 +177,7 @@ Score FBullCowGame::SaveScore(FString NamePlayer)
 				file << tab[i];
 			}
 			//file << score.NamePlayer << " as try " << Score << "X to guess the word with " << word << " letters;" << std::endl;
-			file << score.NamePlayer << "|" << Score << "|" << Word << "|" << std::endl;
+			file << "|" << score.NamePlayer << "|" << Score << "|" << Word << "|" << std::endl;
 			file.close();
 		}
 		else
