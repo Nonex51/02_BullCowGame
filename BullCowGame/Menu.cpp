@@ -48,7 +48,7 @@ void Menu::ShowMenu()
 	std::cout << "               1. Start Bull&Cow" << std::endl;
 	std::cout << "               2. Choose a New Word" << std::endl;
 	std::cout << "               3. Look the stats" << std::endl; 
-	std::cout << "               4. Option" << std::endl; // TODO option menu to choose color
+	std::cout << "               4. Option" << std::endl; 
 	std::cout << "               5. Quit" << std::endl;
 	std::cout << " \n\n" << std::endl;
 	std::cout << "    Press the number of your choice and press Enter" << std::endl;
@@ -436,8 +436,8 @@ void Menu::TrackScore()
 	return;
 
 
-	//TODO
-	//Read the file, search the same word,
+	
+	//TODO Read the file, search the same word,
 	//	Get the best score 
 	//	Get the name of the guess
 	//	Screen the score in game 

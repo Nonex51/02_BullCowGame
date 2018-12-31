@@ -26,12 +26,15 @@ void PrintGameSummary();
 void DisplayMenu();
 void GameIntro();
 void resolution();
+void Pseudo();
 
-FBullCowGame BCGame; 
+FBullCowGame BCGame;
+Score ScoreInst;
 Menu MenuInst;
 
 int main()
 {
+	Pseudo();
 	resolution();
 	DisplayMenu();
 	return 0; // exit the application
@@ -39,6 +42,20 @@ int main()
 
 void resolution() {
 	system("mode con LINES=25 COLS=60");
+}
+
+
+void Pseudo() {
+	
+	std::cout << "Enter your name" << std::endl;
+	std::getline(std::cin, ScoreInst.NamePlayer);
+	std::cout << ScoreInst.NamePlayer;
+	//TODO send this at the BCGames object
+
+	//FBullCowGame::Playername = ScoreInst.NamePlayer;
+	//FString NamePlayer = "player";
+	//Score score = BCGame.SaveScore(ScoreInst.NamePlayer);
+
 }
 
 void PlayGame()
@@ -118,9 +135,8 @@ void PrintGameSummary()
 	if (BCGame.IsGameWon())
 	{
 		MenuInst.ClearCons();
-		FString NamePlayer = "player";
 		std::cout << "WELL DONE - YOU WIN!\n";
-		Score score = BCGame.SaveScore(NamePlayer);
+		
 	}
 	else
 	{

@@ -1,6 +1,6 @@
+bed
 dog
 house
-bed
 computer
 compagny
 children

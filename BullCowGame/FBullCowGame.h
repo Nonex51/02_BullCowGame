@@ -18,8 +18,8 @@ struct FBullCowCount
 struct Score
 {
 	FString NamePlayer = "Player";
-	int score=0;
-	int Word=0;
+	int score = 0 ;
+	int Word = 0 ;
 };
 
 
@@ -39,7 +39,7 @@ class FBullCowGame
 public:
 	FBullCowGame(); // constructor
 	
-	int32 GetMaxTries();
+	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength();
 	bool IsGameWon() const;
@@ -54,6 +54,7 @@ public:
 	// ^^ Please try and ignore this and focus on the interface above ^^
 private:
 	// see constructor for initialisation
+	FString Playername;
 	int32 MyCurrentTry;
 	int32 MyMaxTries;
 	FString MyHiddenWord;
@@ -63,5 +64,6 @@ private:
 	bool IsLowercase(FString) const;
 	bool IsNumber(FString) const;
 	//int best score
+	
 	
 };
