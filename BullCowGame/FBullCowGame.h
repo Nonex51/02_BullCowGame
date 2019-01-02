@@ -17,7 +17,8 @@ struct FBullCowCount
 
 struct Score
 {
-	FString NamePlayer = "Player";
+	FString Playername = "" ;
+	//FString NamePlayer;
 	int score = 0 ;
 	int Word = 0 ;
 };
@@ -39,6 +40,8 @@ class FBullCowGame
 public:
 	FBullCowGame(); // constructor
 	
+	FString GetName();
+
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength();

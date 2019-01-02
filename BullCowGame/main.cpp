@@ -12,6 +12,7 @@ user interaction. For game logic see the FBullCowGame class.
 #include <fstream>
 #include <limits>
 #include <stdexcept>
+#include <vector>
 
 //to make syntax unreal friendly
 using FText = std::string;
@@ -48,8 +49,8 @@ void resolution() {
 void Pseudo() {
 	
 	std::cout << "Enter your name" << std::endl;
-	std::getline(std::cin, ScoreInst.NamePlayer);
-	std::cout << ScoreInst.NamePlayer;
+	std::getline(std::cin, ScoreInst.Playername);
+	std::cout << ScoreInst.Playername;
 	//TODO send this at the BCGames object
 
 	//FBullCowGame::Playername = ScoreInst.NamePlayer;
@@ -210,6 +211,8 @@ void DisplayMenu()
 
 	} while (varmenu != 0);
 }
+
+
 
 /*
 

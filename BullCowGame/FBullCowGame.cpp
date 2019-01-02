@@ -12,9 +12,13 @@ using int32 = int;
 
 FBullCowGame::FBullCowGame() { Reset(); } // default constructor
 
+FString FBullCowGame::GetName() { return Playername; }
+
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength(){ return MyHiddenWord.length(); } 
 bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
+
+
 
 int32 FBullCowGame::GetMaxTries() const {
 	TMap < int32, int32 > WordLengthToMaxTries{ {3,5},{4,5},{5,5},{6,5},{7,6},{8,7},{9,8},{10,11},{11,12} };  //My Maxtries {Length world . Tries}
@@ -146,10 +150,12 @@ bool FBullCowGame::IsNumber(FString Word) const
 }
 
 //void FBullCowGame::SaveScore()
-Score FBullCowGame::SaveScore(FString NamePlayer)		//TODO save in a JSON file not  txt
+							//ScoreInst.NamePlayer
+Score FBullCowGame::SaveScore(FString Playername)
+															//TODO save in a JSON file not  txt
 														//take the value of Score variable and save in a file
 {
-	Score score;
+	
 	int num_ligne = 0;
 	std::ifstream file("../score.txt", std::ios::in);  //open the file, if there is already some score get the all in the buffer (tab)
 	if (file)
@@ -172,6 +178,7 @@ Score FBullCowGame::SaveScore(FString NamePlayer)		//TODO save in a JSON file no
 
 		if (file)
 		{
+			//int Name = ScoreInst.NamePlayer;
 			int Score = MyCurrentTry -1;
 			int Word = MyHiddenWord.length();
 			for (int i = 0; i < num_ligne; i++)
@@ -179,7 +186,7 @@ Score FBullCowGame::SaveScore(FString NamePlayer)		//TODO save in a JSON file no
 				file << tab[i];
 			}
 			//file << score.NamePlayer << " as try " << Score << "X to guess the word with " << word << " letters;" << std::endl;
-			file << "|" << score.NamePlayer << "|" << Score << "|" << Word << "|" << std::endl;
+			file << "|" << Playername << "|" << Score << "|" << Word << "|" << std::endl;
 			file.close();
 		}
 		else
