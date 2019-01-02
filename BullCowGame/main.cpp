@@ -33,10 +33,11 @@ FBullCowGame BCGame;
 Score ScoreInst;
 Menu MenuInst;
 
+
 int main()
 {
-	Pseudo();
 	resolution();
+	Pseudo();
 	DisplayMenu();
 	return 0; // exit the application
 }
@@ -48,10 +49,11 @@ void resolution() {
 
 void Pseudo() {
 	//FText name;
-	std::cout << "Enter your name" << std::endl;
+	std::cout << " ==================== BULL & COW ====================\n";
+	std::cout << " ================= Enter your name ==================\n" << std::endl;
 	//std::cin >> name;
 	std::getline(std::cin, ScoreInst.Playername);
-	std::cout << ScoreInst.Playername;
+	//std::cout << ScoreInst.Playername;
 }
 
 void PlayGame()
@@ -154,6 +156,7 @@ void DisplayMenu()
 {
 	int varmenu;
 	bool bPlayAgain = false;
+	MenuInst.ClearCons();
 	MenuInst.ShowMenu();
 	do
 	{  

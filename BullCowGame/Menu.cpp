@@ -411,8 +411,18 @@ void Menu::TrackScore()
 			if (file)
 			{
 				FString ligne;
-				int num_ligne = 0;
-				std::cout << " ---------------------Last Score --------------------\n" << std::endl;
+				
+				getline(file, ligne, '|');
+				getline(file, ligne, '|');
+				std::cout << ligne << " as win with " ;
+				getline(file, ligne, '|');
+				std::cout << " try with " << ligne;
+				getline(file, ligne, '|');
+				std::cout << " letters" << std::endl;
+			
+
+/*
+std::cout << " ---------------------Last Score --------------------\n" << std::endl;
 
 				for (int i = 0; i < 1; i++)
 				{
@@ -424,7 +434,8 @@ void Menu::TrackScore()
 					std::cout << " try with " << ligne;
 					std::cout << " letters" << std::endl;
 				}
-
+*/
+				
 				//file.clear(); // clear/unset end of file flag
 					//file.seekg(0, std::ios::beg);// up on the begin of the file
 			}
