@@ -19,8 +19,8 @@ struct Score
 {
 	FString Playername = "" ;
 	//FString NamePlayer;
-	int score = 0 ;
-	int Word = 0 ;
+	//int score = 0 ;
+	//int Word = 0 ;
 };
 
 
@@ -39,8 +39,6 @@ class FBullCowGame
 {
 public:
 	FBullCowGame(); // constructor
-	
-	FString GetName();
 
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
@@ -57,7 +55,7 @@ public:
 	// ^^ Please try and ignore this and focus on the interface above ^^
 private:
 	// see constructor for initialisation
-	FString Playername;
+	//FString Playername;
 	int32 MyCurrentTry;
 	int32 MyMaxTries;
 	FString MyHiddenWord;

@@ -47,16 +47,11 @@ void resolution() {
 
 
 void Pseudo() {
-	
+	FText name;
 	std::cout << "Enter your name" << std::endl;
+	std::cin >> name;
 	std::getline(std::cin, ScoreInst.Playername);
 	std::cout << ScoreInst.Playername;
-	//TODO send this at the BCGames object
-
-	//FBullCowGame::Playername = ScoreInst.NamePlayer;
-	//FString NamePlayer = "player";
-	//Score score = BCGame.SaveScore(ScoreInst.NamePlayer);
-
 }
 
 void PlayGame()
@@ -137,7 +132,7 @@ void PrintGameSummary()
 	{
 		MenuInst.ClearCons();
 		std::cout << "WELL DONE - YOU WIN!\n";
-		
+		BCGame.SaveScore(ScoreInst.Playername);
 	}
 	else
 	{
@@ -199,13 +194,15 @@ void DisplayMenu()
 			break;
 
 		case 4:
-			MenuInst.ClearCons();
-			MenuInst.color();
-	
+			//MenuInst.ClearCons();
+			//MenuInst.color();
+			Pseudo();
+			DisplayMenu();
 			break;
 
 		case 5:
-			MenuInst.TrackScore();
+			
+			//MenuInst.TrackScore();
 			return;
 		}
 

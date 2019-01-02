@@ -12,12 +12,9 @@ using int32 = int;
 
 FBullCowGame::FBullCowGame() { Reset(); } // default constructor
 
-FString FBullCowGame::GetName() { return Playername; }
-
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength(){ return MyHiddenWord.length(); } 
 bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
-
 
 
 int32 FBullCowGame::GetMaxTries() const {
@@ -149,8 +146,7 @@ bool FBullCowGame::IsNumber(FString Word) const
 	return true;
 }
 
-//void FBullCowGame::SaveScore()
-							//ScoreInst.NamePlayer
+
 Score FBullCowGame::SaveScore(FString Playername)
 															//TODO save in a JSON file not  txt
 														//take the value of Score variable and save in a file
