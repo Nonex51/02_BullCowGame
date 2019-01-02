@@ -146,10 +146,11 @@ void PrintGameSummary()
 void GameIntro()
 {
 	BCGame.Reset();
+	MenuInst.TrackScore();
 	std::cout << "Can you guess the " <<BCGame.GetHiddenWordLength();
 	std::cout << " letter Word I'm thinking of?\n";
 	std::cout << std::endl;
-	MenuInst.TrackScore();
+	
 }
 
 void DisplayMenu() 
@@ -195,6 +196,7 @@ void DisplayMenu()
 			MenuInst.ClearCons();
 			MenuInst.ViewStats();
 			MenuInst.RemoveStats();
+			_sleep(1500);
 			DisplayMenu();
 			break;
 

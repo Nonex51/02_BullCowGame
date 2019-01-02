@@ -32,8 +32,9 @@ void FBullCowGame::Reset()
 	if (file)
 	{
 		std::getline(file, str);
-		FString HIDDEN_WORD = str;  
-		MyHiddenWord = HIDDEN_WORD;
+		MyHiddenWord = str;
+		/*FString HIDDEN_WORD = str;  
+		MyHiddenWord = HIDDEN_WORD;*/
 		MyCurrentTry = 1;
 		bGameIsWon = false;
 		file.close();
@@ -156,22 +157,46 @@ Score FBullCowGame::SaveScore(FString Playername)
 	std::ifstream file("../score.txt", std::ios::in);  //open the file, if there is already some score get the all in the buffer (tab)
 	if (file)
 	{
-		std::string ligne;
-		while (getline(file, ligne))
-		{
-			++num_ligne;
-		//	std::cout << num_ligne << " . " << ligne << "\n" << std::endl;
-		}
+		//first counts how many lines there are in the file for creat a table
+		FString ligne;
+		while (getline(file, ligne)){++num_ligne;}
 		std::vector<FString> tab(num_ligne);
-		
+		//insert value in the table
+
 		for (int i = 0; i < num_ligne; i++)
 		{	
 			file >> tab[i];
 		}
+		
+
+
+		
+		while (getline(file, ligne))
+		{
+			int i;
+			if (i == num_ligne)
+			{
+				FString ligne = "";
+				getline(file, ligne, '|');
+				getline(file, ligne, '|');
+					if ((ligne != ""))
+					{
+						std::cout << "remove\n" << std::endl;
+					}
+					else
+						std::cout << "File ok\n" << std::endl;
+			}
+			i++;
+		}
+		
+
+
 		file.close();
 
-	std::ofstream file("../score.txt", std::ios::out | std::ios::app);  
 
+
+		//Register in the file
+	std::ofstream file("../score.txt", std::ios::out | std::ios::app);  
 		if (file)
 		{
 			//int Name = ScoreInst.NamePlayer;
@@ -181,7 +206,7 @@ Score FBullCowGame::SaveScore(FString Playername)
 			{
 				file << tab[i];
 			}
-			//file << score.NamePlayer << " as try " << Score << "X to guess the word with " << word << " letters;" << std::endl;
+			
 			file << "|" << Playername << "|" << Score << "|" << Word << "|" << std::endl;
 			file.close();
 		}

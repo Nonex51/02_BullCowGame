@@ -105,6 +105,7 @@ void Menu::DisplayListe()
 			++num_ligne;
 			std::cout << "               " << num_ligne << ". " << ligne << std::endl;
 		}
+		std::cout << " \n" << std::endl;
 		std::cout << " --------------------- End Liste --------------------\n" << std::endl;
 	
 	}
@@ -404,46 +405,44 @@ void Menu::color()
 
 //TODO function go to search the best score in the score file 
 void Menu::TrackScore()
-
 	{
 		{
+			
 			std::ifstream file(score, std::ios::in);  //open the file
 			if (file)
 			{
-				FString ligne;
-				
+				FString ligne = "";
 				getline(file, ligne, '|');
 				getline(file, ligne, '|');
-				std::cout << ligne << " as win with " ;
-				getline(file, ligne, '|');
-				std::cout << " try with " << ligne;
-				getline(file, ligne, '|');
-				std::cout << " letters" << std::endl;
-			
+				file.clear();
+				file.seekg(0, std::ios::beg);
+					if ((ligne != ""))
+					{
+						FString ligne;
+						getline(file, ligne, '|');
+						std::cout << " Best: ";
+						getline(file, ligne, '|');
+						std::cout << ligne << " guessed in ";
+						getline(file, ligne, '|');
+						std::cout << " tries a " << ligne;
+						getline(file, ligne, '|');
+						std::cout << " letter word \n";
+						std::cout << "=============================================\n" << std::endl;
+					}
 
-/*
-std::cout << " ---------------------Last Score --------------------\n" << std::endl;
-
-				for (int i = 0; i < 1; i++)
-				{
-					getline(file, ligne, '|');
-					std::cout << num_ligne << " . " << ligne;
-					getline(file, ligne, '|');
-					std::cout << " as win with " << ligne;
-					getline(file, ligne, '|');
-					std::cout << " try with " << ligne;
-					std::cout << " letters" << std::endl;
-				}
-*/
-				
-				//file.clear(); // clear/unset end of file flag
-					//file.seekg(0, std::ios::beg);// up on the begin of the file
+					else //if open fail
+					{
+						std::cout << "You're going to write down your score " << std::endl;
+						std::cout << "=============================================\n" << std::endl;
+					}
+		
 			}
 			else //if open fail
 			{
 				std::cerr << "Open the File it's impossible !" << std::endl;
 				std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 			}
+
 			return;
 		}
 
@@ -451,41 +450,6 @@ std::cout << " ---------------------Last Score --------------------\n" << std::e
 
 
 
-
-
-
-/*
-{
-	int num_ligne = 0;
-	std::string ligne;
-	int i = 0;
-
-	std::ifstream file(score, std::ios::in);  //open the file
-	if (file)
-	{
-		while (getline(file, ligne)) { ++num_ligne; }
-		file.clear();
-		file.close();
-		std::vector<char> tab(num_ligne);
-		std::ifstream file(score, std::ios::in);
-		while (getline(file, ligne))
-		{
-			i++;
-			 tab[i] = 2;
-
-		}
-		file.clear();
-	}
-
-
-
-	else //if open fail
-	{
-		std::cerr << "Open the File it's impossible !" << std::endl;
-		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
-	}
-	return;
-*/
 
 
 	

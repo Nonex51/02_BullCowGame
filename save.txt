@@ -1,6 +1,7 @@
+birds
 house
-bed
 dog
+bed
 computer
 compagny
 children
