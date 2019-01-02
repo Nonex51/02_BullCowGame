@@ -25,6 +25,12 @@ void Menu::ClearCons()
 	std::system("cls");
 }
 
+/*void Menu::ClearFlag(FString file)
+{
+	file.clear(); // clear/unset end of file flag
+	file.seekg(0, std::ios::beg);// up on the begin of the file
+}*/
+
 void Menu::Intro()
 {
 	std::cout << "Welcome to Bulls and Cows, a fun word game.\n";
@@ -117,7 +123,6 @@ void Menu::DisplayListe()
 	//system("PAUSE");
 	return;
 }
-
 
 int Menu::AddNewWord()
 {
@@ -244,20 +249,20 @@ int Menu::RemoveWord()
 			// Initialisation table 	
 			std::vector<FString> tab(num_ligne);
 
-			for (int i = 0; i < num_ligne; i++)
-			{
-				file >> tab[i];
-			}
+				for (int i = 0; i < num_ligne; i++)
+				{
+					file >> tab[i];
+				}
 			file.close();
 			tab.erase(tab.begin() + num_lignebackup);
 			int nbr_line = num_ligne - 1;
 			std::ofstream file(save, std::ios::out | std::ios::trunc); // open the file
 			file.clear(); // clear/unset end of file flag
-			for (int i = 0; i < nbr_line -1; i++)
-			{
-				FString word = tab[i];
-				file << word << std::endl;
-			}
+				for (int i = 0; i < nbr_line -1; i++)
+				{
+					FString word = tab[i];
+					file << word << std::endl;
+				}
 			file.close();
 			std::cout << "You have remove the word "<< tab[num_lignebackup] << std::endl;
 			}
@@ -302,7 +307,7 @@ void Menu::ViewStats()
 		std::ifstream file(score, std::ios::in);  //open the file
 		if (file)
 		{
-			FString ligne;
+			FString ligne;			
 			int num_ligne = 0;
 			ClearCons();
 			std::cout << " ==================== BULL & COW ====================\n" << std::endl;
@@ -411,12 +416,26 @@ void Menu::TrackScore()
 			std::ifstream file(score, std::ios::in);  //open the file
 			if (file)
 			{
+				int num_ligne=0;
+				FString a;
+				while (getline(file, a)) { ++num_ligne; }
+				//if there are something in the file
 				FString ligne = "";
 				getline(file, ligne, '|');
 				getline(file, ligne, '|');
 				file.clear();
 				file.seekg(0, std::ios::beg);
-					if ((ligne != ""))
+
+
+				for (int i = 0; i < num_ligne-1; i++)
+				{
+					getline(file, ligne, '|');
+					getline(file, ligne, '|');
+					getline(file, ligne, '|');
+					getline(file, ligne, '|');
+				}
+
+					if ((ligne != ""))// if I can take the first line
 					{
 						FString ligne;
 						getline(file, ligne, '|');
@@ -424,9 +443,9 @@ void Menu::TrackScore()
 						getline(file, ligne, '|');
 						std::cout << ligne << " guessed in ";
 						getline(file, ligne, '|');
-						std::cout << " tries a " << ligne;
+						std::cout << ligne << " tries a " ;
 						getline(file, ligne, '|');
-						std::cout << " letter word \n";
+						std::cout << ligne << " letter word \n";
 						std::cout << "=============================================\n" << std::endl;
 					}
 
@@ -447,6 +466,8 @@ void Menu::TrackScore()
 		}
 
 	}
+
+
 
 
 

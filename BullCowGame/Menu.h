@@ -23,6 +23,7 @@ public:
 	void color();
 	//void Pointeur();
 	void TrackScore();
+	//void ClearFlag(FString file);
 	
 
 private:

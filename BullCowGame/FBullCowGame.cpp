@@ -167,10 +167,9 @@ Score FBullCowGame::SaveScore(FString Playername)
 		{	
 			file >> tab[i];
 		}
-		
+		file.close();
 
-
-		
+		/* Remove the last empty line on the file
 		while (getline(file, ligne))
 		{
 			int i;
@@ -188,25 +187,20 @@ Score FBullCowGame::SaveScore(FString Playername)
 			}
 			i++;
 		}
+		*/
 		
-
-
-		file.close();
-
-
-
+		
 		//Register in the file
 	std::ofstream file("../score.txt", std::ios::out | std::ios::app);  
 		if (file)
 		{
-			//int Name = ScoreInst.NamePlayer;
 			int Score = MyCurrentTry -1;
 			int Word = MyHiddenWord.length();
 			for (int i = 0; i < num_ligne; i++)
 			{
 				file << tab[i];
 			}
-			
+			//NOTE the format of the save data
 			file << "|" << Playername << "|" << Score << "|" << Word << "|" << std::endl;
 			file.close();
 		}
