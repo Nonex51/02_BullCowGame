@@ -46,7 +46,6 @@ void resolution() {
 	system("mode con LINES=25 COLS=60");
 }
 
-
 void Pseudo() {
 	//FText name;
 	std::cout << " ==================== BULL & COW ====================\n";
@@ -135,7 +134,7 @@ void PrintGameSummary()
 		MenuInst.ClearCons();
 		std::cout << " ==================== BULL & COW ====================\n";
 		std::cout << "\n\n   WELL DONE - YOU WIN!\n"<< std::endl;
-		BCGame.SaveScore(ScoreInst.Playername);
+		BCGame.SaveScore(ScoreInst.Playername);								 //avoid unnamed object with custom destructor, why ? 
 	}
 	else
 	{
@@ -150,7 +149,6 @@ void GameIntro()
 	std::cout << "Can you guess the " <<BCGame.GetHiddenWordLength();
 	std::cout << " letter Word I'm thinking of?\n";
 	std::cout << std::endl;
-	
 }
 
 void DisplayMenu() 
@@ -180,7 +178,7 @@ void DisplayMenu()
 			GameIntro();
 			std::cin.ignore(1,' ');		// NOTE this ignore ONE caracter 
 			PlayGame();
-			//bPlayAgain = AskToPlayAgain();
+			bPlayAgain = AskToPlayAgain();
 			DisplayMenu();
 		} while (bPlayAgain);
 			break;
@@ -236,7 +234,7 @@ obtained by "guess""
 
 //BUG Verif and controle each inuput of the player ! 
 //to move in the menu, strange comportement 
-
+//AskToPlay Again doesn't work !
 
 
 

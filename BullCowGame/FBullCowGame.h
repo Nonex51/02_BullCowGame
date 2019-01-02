@@ -13,17 +13,13 @@ struct FBullCowCount
 	int32 Cows = 0;
 };
 
-
-
-struct Score
+struct Score		// Try to do this structure to manipulate better the data 
 {
 	FString Playername = "" ;
 	//FString NamePlayer;
 	//int score = 0 ;
 	//int Word = 0 ;
 };
-
-
 
 enum class EGuessStatus		
 {
@@ -45,21 +41,17 @@ public:
 	int32 GetHiddenWordLength();
 	bool IsGameWon() const;
 	EGuessStatus CheckGuessValidity(FString);
-
 	void Reset();
 	FBullCowCount SubmitValidGuess(FString);
 
 	Score SaveScore(FString);
-	//void SaveScore();
+	
 
-	// ^^ Please try and ignore this and focus on the interface above ^^
 private:
 	// see constructor for initialisation
-	//FString Playername;
 	int32 MyCurrentTry;
 	int32 MyMaxTries;
-	FString MyHiddenWord;
-	//FString PlayerName;
+	FString MyHiddenWord;	
 	bool bGameIsWon;
 	bool IsIsogram(FString) const;
 	bool IsLowercase(FString) const;
