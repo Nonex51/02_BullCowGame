@@ -404,6 +404,46 @@ void Menu::color()
 
 //TODO function go to search the best score in the score file 
 void Menu::TrackScore()
+
+	{
+		{
+			std::ifstream file(score, std::ios::in);  //open the file
+			if (file)
+			{
+				FString ligne;
+				int num_ligne = 0;
+				std::cout << " ---------------------Last Score --------------------\n" << std::endl;
+
+				for (int i = 0; i < 1; i++)
+				{
+					getline(file, ligne, '|');
+					std::cout << num_ligne << " . " << ligne;
+					getline(file, ligne, '|');
+					std::cout << " as win with " << ligne;
+					getline(file, ligne, '|');
+					std::cout << " try with " << ligne;
+					std::cout << " letters" << std::endl;
+				}
+
+				//file.clear(); // clear/unset end of file flag
+					//file.seekg(0, std::ios::beg);// up on the begin of the file
+			}
+			else //if open fail
+			{
+				std::cerr << "Open the File it's impossible !" << std::endl;
+				std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
+			}
+			return;
+		}
+
+	}
+
+
+
+
+
+
+/*
 {
 	int num_ligne = 0;
 	std::string ligne;
@@ -425,7 +465,7 @@ void Menu::TrackScore()
 		}
 		file.clear();
 	}
-	
+
 
 
 	else //if open fail
@@ -434,6 +474,7 @@ void Menu::TrackScore()
 		std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 	}
 	return;
+*/
 
 
 	
@@ -441,7 +482,7 @@ void Menu::TrackScore()
 	//	Get the best score 
 	//	Get the name of the guess
 	//	Screen the score in game 
-}
+
 
 /*
 int a = 0;

@@ -47,9 +47,9 @@ void resolution() {
 
 
 void Pseudo() {
-	FText name;
+	//FText name;
 	std::cout << "Enter your name" << std::endl;
-	std::cin >> name;
+	//std::cin >> name;
 	std::getline(std::cin, ScoreInst.Playername);
 	std::cout << ScoreInst.Playername;
 }
@@ -131,7 +131,8 @@ void PrintGameSummary()
 	if (BCGame.IsGameWon())
 	{
 		MenuInst.ClearCons();
-		std::cout << "WELL DONE - YOU WIN!\n";
+		std::cout << " ==================== BULL & COW ====================\n";
+		std::cout << "\n\n   WELL DONE - YOU WIN!\n"<< std::endl;
 		BCGame.SaveScore(ScoreInst.Playername);
 	}
 	else
@@ -146,6 +147,7 @@ void GameIntro()
 	std::cout << "Can you guess the " <<BCGame.GetHiddenWordLength();
 	std::cout << " letter Word I'm thinking of?\n";
 	std::cout << std::endl;
+	MenuInst.TrackScore();
 }
 
 void DisplayMenu() 
@@ -196,7 +198,7 @@ void DisplayMenu()
 		case 4:
 			//MenuInst.ClearCons();
 			//MenuInst.color();
-			Pseudo();
+			//Pseudo();
 			DisplayMenu();
 			break;
 
