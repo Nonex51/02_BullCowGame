@@ -5,8 +5,6 @@
 
 class Menu
 {
-
-	
 public:
 	
 	//methode
@@ -21,9 +19,10 @@ public:
 	int RemoveWord();
 	int ChooseNewWord();
 	void color();
-	//void Pointeur();
 	void TrackScore();
+	//void TrackWord();
 	//void ClearFlag(FString file);
+	//void Pointeur();
 	
 
 private:

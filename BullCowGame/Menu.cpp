@@ -256,7 +256,7 @@ int Menu::RemoveWord()
 			file.close();
 			tab.erase(tab.begin() + num_lignebackup);
 			int nbr_line = num_ligne - 1;
-			std::ofstream file(save, std::ios::out | std::ios::trunc); // open the file
+			std::ofstream file(save, std::ios::out | std::ios::trunc); // open the file and remplace
 			file.clear(); // clear/unset end of file flag
 				for (int i = 0; i < nbr_line -1; i++)
 				{
@@ -407,12 +407,10 @@ void Menu::color()
 	return;
 }
 
-
-//TODO function go to search the best score in the score file 
+//TODO function go to search the last score in the score file 
 void Menu::TrackScore()
 	{
-		{
-			
+		{	
 			std::ifstream file(score, std::ios::in);  //open the file
 			if (file)
 			{
@@ -425,8 +423,6 @@ void Menu::TrackScore()
 				getline(file, ligne, '|');
 				file.clear();
 				file.seekg(0, std::ios::beg);
-
-
 				for (int i = 0; i < num_ligne-1; i++)
 				{
 					getline(file, ligne, '|');
@@ -434,6 +430,7 @@ void Menu::TrackScore()
 					getline(file, ligne, '|');
 					getline(file, ligne, '|');
 				}
+
 
 					if ((ligne != ""))// if I can take the first line
 					{
@@ -448,28 +445,60 @@ void Menu::TrackScore()
 						std::cout << ligne << " letter word \n";
 						std::cout << "=============================================\n" << std::endl;
 					}
-
 					else //if open fail
 					{
 						std::cout << "You're going to write down your score " << std::endl;
 						std::cout << "=============================================\n" << std::endl;
 					}
-		
 			}
 			else //if open fail
 			{
 				std::cerr << "Open the File it's impossible !" << std::endl;
 				std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
 			}
-
 			return;
 		}
-
 	}
 
 
 
+/*
+void Menu::TrackWord()
+{
+	{
+		std::ifstream file(score, std::ios::in);  //open the file
+		if (file)
+		{
+			int num_ligne = 0;
+			FString a;
+			while (getline(file, a)) { ++num_ligne; } //compt line of the file
+			std::vector<FString> tab(num_ligne);
+			FString ligne;
+			for (int i = 0; i < num_ligne - 1; i++)
+			{
+				FString word = tab[i];
+				getline(file, ligne, 'nono');
 
+				tab[i] << ligne << std::endl;
+
+			}
+
+			}
+			else //if open fail
+			{
+				std::cout << "You're going to write down your score " << std::endl;
+				std::cout << "=============================================\n" << std::endl;
+			}
+		}
+		else //if open fail
+		{
+			std::cerr << "Open the File it's impossible !" << std::endl;
+			std::cerr << "Make sure that Isogram.txt inside Bulls&Cows folder !" << std::endl;
+		}
+		return;
+	}
+}
+*/
 
 
 
