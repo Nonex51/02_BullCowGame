@@ -183,6 +183,11 @@ Score FBullCowGame::SaveScore(FString Playername)
 			}
 			i++;
 		}
+		//TODO
+		Getline on the last line on the file
+		if this line is empty 
+		also remove this line
+		else do nothing
 		*/
 		
 		

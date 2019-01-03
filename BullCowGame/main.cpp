@@ -209,6 +209,7 @@ void DisplayMenu()
 			
 			//MenuInst.TrackScore();
 			return;
+			exit;
 		}
 
 	} while (varmenu != 0);

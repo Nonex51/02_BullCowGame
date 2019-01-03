@@ -1,8 +1,7 @@
-birds
+chair
 house
 dog
-bed
+birds
 computer
 compagny
 children
-smartphone
